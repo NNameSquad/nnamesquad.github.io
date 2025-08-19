@@ -1127,10 +1127,37 @@ body {
     width: 14px;
     height: 8px;
     background: transparent;
+    transform-origin: left top;
+    animation: wing 0.5s ease-in-out infinite;
+}
+
+.bird .wing.left {
+    left: 0;
+    border-top: 3px solid #333;
+    border-left: 3px solid #333;
+    border-top-left-radius: 14px;
+    background: transparent;
+    transform-origin: right top;
+    animation: wing 0.5s ease-in-out infinite;
+}
+
+.bird .wing.right {
+    left: 14px;
     border-top: 3px solid #333;
     border-right: 3px solid #333;
     border-top-right-radius: 14px;
+    background: transparent;
+    transform: scaleX(-1);
     transform-origin: left top;
+    animation-delay: .1s;
+    animation: wing 0.5s ease-in-out infinite;
+}
+
+/* Rotate left bird wing 180deg to mirror right wing */
+.bird .wing.left {
+    left: 0;
+    /* Mirror horizontally and rotate to match right wing, but keep animation */
+    transform: scaleX(-1) rotate(180deg);
     animation: wing 0.5s ease-in-out infinite;
 }
 
@@ -1196,6 +1223,32 @@ body {
     background: linear-gradient(90deg, #0a0a0a, #000 70%);
     border-radius: 0 12px 12px 0;
     transform-origin: left 50%;
+    animation: bat-wing .18s ease-in-out infinite;
+}
+
+.bat .wing.left {
+    left: 0;
+    background: linear-gradient(270deg, #0a0a0a, #000 70%);
+    border-radius: 12px 0 0 12px;
+    transform-origin: right 50%;
+    animation: bat-wing .18s ease-in-out infinite;
+}
+
+.bat .wing.right {
+    left: 24px;
+    background: linear-gradient(90deg, #0a0a0a, #000 70%);
+    border-radius: 0 12px 12px 0;
+    transform: scaleX(-1);
+    transform-origin: left 50%;
+    animation-delay: .06s;
+    animation: bat-wing .18s ease-in-out infinite;
+}
+
+/* Rotate left bat wing 180deg to mirror right wing */
+.bat .wing.left {
+    left: 0;
+    /* Mirror horizontally and rotate to match right wing, but keep animation */
+    transform: scaleX(-1) rotate(180deg);
     animation: bat-wing .18s ease-in-out infinite;
 }
 
