@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NNS • Reconstruction</title>
+    <link rel="icon" type="image/png" href="https://sayouri.dev/nns/media/nnslogo.png">
+    <meta property="og:title" content="NNS • Page is under reconstruction">
+    <meta property="og:description" content="We're working hard to bring you a new experience. Stay tuned!">
+    <meta property="og:image" content="https://sayouri.dev/nns/media/nnslogo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="construction-bg">
+        <!-- sky extras -->
+        <div class="sun"></div>
+        <div class="moon"></div>
+        <div class="stars" id="stars">
+            <div class="l1" id="starsL1"></div>
+            <div class="l2" id="starsL2"></div>
+            <div class="l3" id="starsL3"></div>
+        </div>
+        <div class="cloud"></div>
+        <div class="cloud small"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+        <div class="bird">
+            <div class="wing left"></div>
+            <div class="wing right"></div>
+        </div>
+        <div class="bird b2" style="left:-20vw">
+            <div class="wing left"></div>
+            <div class="wing right"></div>
+        </div>
+        <div class="bird b3" style="left:-30vw">
+            <div class="wing left"></div>
+            <div class="wing right"></div>
+        </div>
+        <div class="bat">
+            <div class="wing left"></div>
+            <div class="body"></div>
+            <div class="snout"></div>
+            <div class="wing right"></div>
+        </div>
+        <div class="bat b2" style="left:-18vw">
+            <div class="wing left"></div>
+            <div class="body"></div>
+            <div class="snout"></div>
+            <div class="wing right"></div>
+        </div>
+        <div class="bat-beam" id="batBeam" aria-hidden="true"></div>
+        <div class="bat-signal" id="batSignal" aria-hidden="true"></div>
+
+        <!-- foreground set -->
+        <div class="crane">
+            <div class="tower"></div>
+            <div class="base"></div>
+            <div class="head"></div>
+            <div class="jib">
+                <div class="trolley">
+                    <div class="cable">
+                        <div class="hook"></div>
+                        <div class="payload"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="counterweight"></div>
+        </div>
+
+        <div class="excavator">
+            <div class="track"></div>
+            <div class="body"></div>
+            <div class="cabin"></div>
+            <div class="beacon"></div>
+            <div class="arm">
+                <div class="boom"></div>
+                <div class="stick"></div>
+                <div class="bucket"></div>
+            </div>
+            <div class="puff p1"></div>
+            <div class="puff p2"></div>
+            <div class="puff p3"></div>
+        </div>
+
+        <div class="tape tape1"></div>
+        <div class="fence"></div>
+        <!-- cones parade -->
+        <div class="cone" style="left: 8vw; transform: rotate(-2deg);"></div>
+        <div class="cone" style="left: 12vw; transform: rotate(1deg);"></div>
+        <div class="cone" style="left: 16vw; transform: rotate(-1deg);"></div>
+        <div class="cone" style="left: 20vw; transform: rotate(2deg);"></div>
+        <div class="cone" style="left: 24vw;"></div>
+        <div class="cone" style="left: 28vw; transform: rotate(-1deg);"></div>
+        <div class="cone" style="left: 32vw;"></div>
+        <div class="cone" style="left: 35vw; transform: rotate(1deg);"></div>
+        <div class="cone" style="left: 38vw; transform: rotate(-2deg);"></div>
+        <div class="cone" style="left: 42vw; transform: rotate(1deg);"></div>
+        <div class="cone" style="left: 46vw;"></div>
+        <div class="cone" style="left: 49vw; transform: rotate(-1deg);"></div>
+        <div class="cone" style="left: 52vw;"></div>
+        <div class="cone" style="left: 56vw; transform: rotate(1deg);"></div>
+        <div class="cone" style="left: 60vw; transform: rotate(-1deg);"></div>
+        <div class="cone" style="left: 64vw;"></div>
+        <div class="cone" style="left: 68vw; transform: rotate(2deg);"></div>
+        <div class="cone" style="left: 72vw; transform: rotate(-2deg);"></div>
+        <div class="cone" style="left: 76vw; transform: rotate(1deg);"></div>
+        <div class="cone" style="left: 80vw;"></div>
+        <div class="cone" style="left: 84vw; transform: rotate(-1deg);"></div>
+        <div class="cone" style="left: 88vw; transform: rotate(1deg);"></div>
+        <div class="sign">UNDER CONSTRUCTION</div>
+        <!-- Krecik the mole -->
+        <div class="mole">
+            <div class="burrow"></div>
+            <div class="body">
+                <div class="head">
+                    <div class="nose"></div>
+                    <div class="eyes open"></div>
+                    <div class="eyes closed"></div>
+                </div>
+                <div class="paw left"></div>
+                <div class="paw right"></div>
+            </div>
+            <div class="zz z1">Z</div>
+            <div class="zz z2">Z</div>
+            <div class="zz z3">Z</div>
+        </div>
+        <div class="ground"></div>
+    </div>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="phase-controls" id="phaseControls" title="Temporarily set scene phase (resets after 30s)">
+        <button type="button" data-phase="sunrise" aria-label="Sunrise">🌅</button>
+        <button type="button" data-phase="day" aria-label="Day">☀️</button>
+        <button type="button" data-phase="moonrise" aria-label="Moonrise">🌇</button>
+        <button type="button" data-phase="night" aria-label="Night">🌙</button>
+    </div>
+    <div class="jpii-overlay" id="jpiiOverlay" aria-hidden="true">
+        <img src="jpii.jpeg" alt="John Paul II">
+    </div>
+    <div class="notice-sign">
+        <h1>NoName Squad</h1>
+        <h2>Website Under Construction Notice</h2>
+        <p><strong>Hi, welcome to NoName Squad!</strong><br><br>We're rebuilding our website. You may experience brief
+            downtime during this
+            maintenance, since <strong>we're making some exciting updates</strong> and you can see this page - that
+            means
+            <strong>we're almost there</strong>.<br>Until this page will be lunched, you can check our old <a
+                href="https://sites.google.com/view/noname-squad/home">website</a>.
+        </p>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
