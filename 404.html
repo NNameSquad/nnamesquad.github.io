@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404 Not Found - NoName Squad. Choose to visit the old or new website.">
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:title" content="NoName Squad - 404 Not Found">
+    <meta property="og:description" content="Page not found. Choose to visit the old or new NoName Squad website.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nnamesquad.github.io/404.html">
+    <meta property="og:image" content="https://sayouri.dev/nns/media/nnslogo.png">
+    <title>Redirecting...</title>
+    
+    <style>
+        body {
+            background:
+                radial-gradient(circle at 20% 30%, #ffb347 0%, #b87d3c 60%, transparent 100%),
+                /* orange to brown */
+                radial-gradient(circle at 80% 70%, #ffd580 0%, #ffb347 50%, transparent 100%),
+                /* light orange to orange */
+                linear-gradient(120deg, #b87d3c 0%, #ffd580 100%);
+            /* brown to light orange */
+            background-blend-mode: multiply, lighten, normal;
+            background-size: 160% 160%, 180% 180%, 100% 100%;
+            animation: marshmove 12s ease-in-out infinite alternate;
+            color: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .redirect-box {
+            background: rgba(32, 32, 32, 0.82);
+            border: 2px solid #ffd400;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+            padding: 2.2rem 2.8rem;
+            text-align: center;
+            max-width: 500px;
+            margin: 2rem auto;
+            color: red;
+        }
+
+        .redirect-box h1 {
+            font-size: 2.2rem;
+            color: #ffd400;
+            margin-bottom: 0.6rem;
+            letter-spacing: 1px;
+        }
+
+        .redirect-box p {
+            font-size: 1.1rem;
+            color: #222;
+            margin: 0.5rem 0 0 0;
+            color: aliceblue;
+        }
+
+        .loader {
+            margin: 1.2rem auto 0 auto;
+            border: 4px solid #ffd400;
+            border-top: 4px solid #222;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bgmove {}
+
+        @keyframes marshmove {
+            0% {
+                background-position: 0% 0%, 100% 100%, 0% 50%;
+            }
+
+            50% {
+                background-position: 50% 60%, 60% 40%, 100% 50%;
+            }
+
+            100% {
+                background-position: 100% 100%, 0% 0%, 100% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="redirect-box">
+        <h2>404</h2>
+        <h2>Page not found</h2>
+        <p>Our website is under reconstruction.<br />Previously saved links or those from our Discord may not
+            work.<br />Please search for the desired page manually.</p>
+        <h1>Now make a choice...</h1>
+        <div>
+            <button id="newBtn"
+                style="margin: 0.5rem 1rem; padding: 0.7rem 1.6rem; font-size: 1rem; background: #ffb347; color: #222; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">Visit
+                NEW website</button>
+            <button id="oldBtn"
+                style="margin: 0.5rem 1rem; padding: 0.7rem 1.6rem; font-size: 1rem; background: #ffb347; color: #222; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">Visit
+                OLD website</button>
+        </div>
+        <div class="loader" style="visibility: hidden;"></div>
+    </div>
+    <script>
+        function showLoaderAndRedirect(url) {
+            var loader = document.querySelector('.loader');
+            loader.style.visibility = 'visible';
+            var wait = Math.floor(Math.random() * 4000) + 3000;
+            setTimeout(function () {
+                window.location.href = url;
+            }, wait);
+        }
+        document.getElementById('oldBtn').onclick = function () {
+            showLoaderAndRedirect('https://sites.google.com/view/noname-squad/');
+        };
+        document.getElementById('newBtn').onclick = function () {
+            showLoaderAndRedirect('https://nnamesquad.github.io/');
+        };
+    </script>
+</body>
+
+</html>
