@@ -1,162 +1,1152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NoName Squad - Website under reconstruction. Stay tuned for updates!">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="NoName Squad - Website Under Reconstruction">
-    <meta property="og:description" content="We're working hard to bring you a new experience. Stay tuned!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nnamesquad.github.io/">
-    <meta property="og:image" content="https://sayouri.dev/nns/media/nnslogo.png">
-    <title>NNS • Reconstruction</title>
-    <link rel="icon" type="image/png" href="https://sayouri.dev/nns/media/nnslogo.png">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NoName Squad - Community Hub" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/png" href="https://sayouri.dev/nns/media/nnslogo.png" />
+    <title>NoName Squad</title>
+    <meta property="og:title" content="NoName Squad | Community Hub" />
+    <meta property="og:description"
+        content="Welcome to the NoName Squad Community Hub! You can explore our server's features, meet our team, and learn about our community. Enjoy your stay!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nnamesquad.top/" />
+    <meta property="og:image" content="https://sayouri.dev/nns/media/nnslogo.png" />
+
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="construction-bg">
-        <!-- sky extras -->
-        <div class="sun"></div>
-        <div class="moon"></div>
-        <div class="stars" id="stars">
-            <div class="l1" id="starsL1"></div>
-            <div class="l2" id="starsL2"></div>
-            <div class="l3" id="starsL3"></div>
+    <div class="background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
         </div>
-        <div class="cloud"></div>
-        <div class="cloud small"></div>
-        <div class="cloud c2"></div>
-        <div class="cloud c3"></div>
-        <div class="bird">
-            <div class="wing left"></div>
-            <div class="wing right"></div>
-        </div>
-        <div class="bird b2" style="left:-20vw">
-            <div class="wing left"></div>
-            <div class="wing right"></div>
-        </div>
-        <div class="bird b3" style="left:-30vw">
-            <div class="wing left"></div>
-            <div class="wing right"></div>
-        </div>
-        <div class="bat">
-            <div class="wing left"></div>
-            <div class="body"></div>
-            <div class="snout"></div>
-            <div class="wing right"></div>
-        </div>
-        <div class="bat b2" style="left:-18vw">
-            <div class="wing left"></div>
-            <div class="body"></div>
-            <div class="snout"></div>
-            <div class="wing right"></div>
-        </div>
-        <div class="bat-beam" id="batBeam" aria-hidden="true"></div>
-        <div class="bat-signal" id="batSignal" aria-hidden="true"></div>
+    </div>
+    <div class="main-content">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">🙊</div>
+                <h1>NoName Squad</h1>
+                <h2>Community Hub</h2>
+            </div>
+        </header>
+        <section class="welcome-section">
+            <div class="welcome-card">
+                <div class="welcome-icon">👋</div>
+                <h2>Welcome to our server website</h2>
+                <p>Learn more about our community and features.</p>
+                <br />
+                <h3>
+                    Are you a member of our community and you stuck on
+                    <strong style="color: #4caf50">#『✅』securityˑverification</strong>
+                    channel?
+                </h3>
+                <p>
+                    Click
+                    <button class="verify-button"
+                        onclick="window.location.href='https://securitybot.gg/user/verification'">
+                        Verify!
+                    </button>
+                    to proceed with the verification process. Eventually, contact our
+                    staff for assistance.
+                </p>
+            </div>
+        </section>
+        <section class="menu-grid">
+            <div class="menu-card" data-action="homepage">
+                <div class="card-icon">🏠</div>
+                <h3>Home Page</h3>
+                <p>
+                    View the main information about the server history, features and
+                    community.
+                </p>
+                <div class="card-glow"></div>
+            </div>
 
-        <!-- foreground set -->
-        <div class="crane">
-            <div class="tower"></div>
-            <div class="base"></div>
-            <div class="head"></div>
-            <div class="jib">
-                <div class="trolley">
-                    <div class="cable">
-                        <div class="hook"></div>
-                        <div class="payload"></div>
+            <div class="menu-card" data-action="tos">
+                <div class="card-icon">📜</div>
+                <h3>Terms & Conditions</h3>
+                <p>
+                    Read our Terms & Conditions, Privacy Policy, and Copyright Notice.
+                </p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card" data-action="halloffame">
+                <div class="card-icon">🏆</div>
+                <h3>Hall of Fame</h3>
+                <p>A special thanks to the honorable members or contributors.</p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card-soon" data-action="roles">
+                <div class="card-icon">⚙️<strong id="soon">（SOON!）</strong></div>
+                <h3>Roles benefits</h3>
+                <p>Explore the benefits of different roles within the server.</p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card" data-action="boosters">
+                <div class="card-icon">🚀</div>
+                <h3>Server boosters</h3>
+                <p>Checks server boosters history and stats.</p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card" data-action="bughunters">
+                <div class="card-icon">👾</div>
+                <h3>Bug Hunters</h3>
+                <p>
+                    Recognizing our community's bug hunters and their contributions.
+                </p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card-soon" data-action="partnerships">
+                <div class="card-icon">🤝<strong id="soon">（SOON!）</strong></div>
+                <h3>Partnerships</h3>
+                <p>Our collaborations with other communities and/or projects.</p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card-soon" data-action="ourbots">
+                <div class="card-icon">🤖<strong id="soon">（SOON!）</strong></div>
+                <h3>Our Bots</h3>
+                <p>Meet the bots that we made for our community.</p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card" data-action="store">
+                <div class="card-icon">🛒</div>
+                <h3>Server Store</h3>
+                <p>
+                    Our store offers ways to support the community and explore shopping
+                    history.
+                </p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card-soon" data-action="collaborators">
+                <div class="card-icon">🚧<strong id="soon">（SOON!）</strong></div>
+                <h3>Collaborators</h3>
+                <p>
+                    Meet our collaborators and learn about their contributions to the
+                    community.
+                </p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card" data-action="staff">
+                <div class="card-icon">👥</div>
+                <h3>Staff Members</h3>
+                <p>
+                    Meet our dedicated staff members and their roles in the community.
+                </p>
+                <div class="card-glow"></div>
+            </div>
+
+            <div class="menu-card" data-action="contact">
+                <div class="card-icon">📞</div>
+                <h3>Contact</h3>
+                <p>Get in touch with our team for any inquiries or support.</p>
+                <div class="card-glow"></div>
+            </div>
+        </section>
+
+        <!-- Bottom info -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>
+                        &copy; 2019-<span id="current-year"></span>
+                        <a href="https://nnamesquad.top/">NoName Squad</a>. All rights
+                        reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--MODALS (ordered to match menu cards) -->
+    <!-- Home Page Modal -->
+    <div id="homepage-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏠 Home Page</h2>
+                <button class="close-btn" onclick="closeModal('homepage-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <h1 style="font-weight: 300; font-size: 28px">
+                    WELCOME TO THE OFFICIAL WEBSITE OF
+                </h1>
+                <h1 style="
+              font-weight: 900;
+              color: var(--accent-color);
+              font-size: 37px;
+            ">
+                    NoName Squad
+                </h1>
+                <p style="font-size: 20px">
+                    Nice, friendly and tolerant community of people from Poland and
+                    beyond who like to play games, joke around and generally have a good
+                    time. We're open to everyone and welcome anyone, here you can be
+                    yourself whoever you are.
+                </p>
+                <p style="font-size: 18px; font-weight: 300; text-align: center">
+                    Briefly about us:
+                </p>
+                <p style="font-size: 16px; font-weight: 400">
+                    NoName Squad is a server created on November 11, 2019 for the
+                    purpose of testing and learning about the features of discord, at
+                    that time we also focused on creating our own proprietary bot
+                    (without any goals for the future). Over time, we noticed that our
+                    then non-public project began to make a buzz around itself, we
+                    decided to take the opportunity and on December 1, 2019 we opened
+                    the server under the name "NoName Squad", which has remained with us
+                    to this day. The server began to attract quite a bit of attention
+                    towards users, and grew relatively quickly. Noticing its potential,
+                    we stated to make the server "for friends" an open community, which
+                    we are to this day.
+                </p>
+                <h2 style="font-size: 28px; margin-top: 1em">
+                    What makes us special?
+                </h2>
+                <h1 style="font-size: 37px; font-weight: 500">
+                    Here are some examples:
+                </h1>
+                <ul style="font-size: 18px; font-weight: 400; margin-top: 16px">
+                    <li>Custom-made bots for unique features</li>
+                    <li>
+                        Frequent giveaways: Nitro, PaySafeCard, Steam Keys, server
+                        currency, and roles
+                    </li>
+                    <li>Diverse channels for every interest</li>
+                    <li>Advanced server economy and level systems</li>
+                    <li>Many rewards for active participation</li>
+                    <li>Friendly and helpful staff</li>
+                    <li>Open to cooperation and community suggestions</li>
+                </ul>
+                <span class="discord-widget">
+                    <iframe src="https://discord.com/widget?id=643524342923264012&theme=dark" width="500" height="450"
+                        allowtransparency="true" frameborder="0"
+                        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+                    </iframe>
+                </span>
+                <a class="discord-link-button" style="margin-top: 3em" href="https://discord.nnamesquad.top/"
+                    target="_blank">Join our Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOS Modal -->
+    <div id="tos-modal" class="modal hidden" role="dialog" aria-labelledby="tos-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📜 Terms & Conditions</h2>
+                <button class="close-btn" onclick="closeModal('tos-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content" style="padding-top: 1em">
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+            ">
+                    Terms of Services
+                </h1>
+                <h2 style="font-weight: 400; font-size: 16px">
+                    We comply with the
+                    <a href="https://discord.com/terms">Terms of Service</a> and
+                    <a href="https://discord.com/guidelines">Community Guidelines</a>.
+                    As a community server, we also take into consideration:
+                    <a href="https://discord.com/community/developing-server-rules#title-2">Discord Safety & Moderation:
+                        Server Rules</a>, and any violation of Discord's rules will result in a permanent
+                    ban!
+                </h2>
+                <p style="color: var(--accent-light); text-align: center">
+                    The main rules are ONLY in Polish due to their significant nature,
+                    but you can translate the rules yourself. We are not responsible for
+                    translation errors, and the original version of the rules is the
+                    decisive one.
+                </p>
+                <section id="rules-list"></section>
+                <!--- RULES --->
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+            ">
+                    Copyright Notice
+                </h1>
+                <p style="color: var(--accent-light); text-align: center">
+                    <strong style="color: var(--accent-color)">Copyright &copy; 2019-<span id="current-year"></span>
+                        NoName
+                        Squad</strong><br /><strong>All rights reserved</strong>
+                </p>
+                <p>
+                    This website's content and content on our discord server is
+                    protected by copyright in accordance with the
+                    <strong>Copyright and Related Rights Act of February 4, 1994</strong>
+                    (Journal of Laws 2022.0.2509 t.j.). You may only copy or distribute
+                    materials on this website with the permission of the copyright
+                    owner, as specified in
+                    <span style="font-weight: bolder">1.11§</span> of our
+                    regulations.<br />
+                    If you are interested in using any content from our site, please
+                    contact us in advance at e-mail:
+                    <a href="mailto:contact@nnamesquad.top">contact@nnamesquad.top</a>.
+                    Copyright protection extends to all content, such as text, graphics,
+                    photos, videos, sounds, and other materials posted on the site or
+                    our discord server.<br />
+                    It is important to remember that copyright infringement can result
+                    in serious legal and financial consequences. All trademarks, product
+                    names, and company names used on this site are the property of their
+                    respective owners.<br />
+                    Thank you for respecting our copyrights and adhering to the server
+                    and website terms and conditions.
+                </p>
+
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+            ">
+                    Privacy Policy
+                </h1>
+                <h2 style="font-size: 16px">How Do We Collect and Process Data?</h2>
+                <p>
+                    Our server is governed by <strong>Discord's privacy policy</strong>,
+                    which can be found here:
+                    <a href="https://discord.com/privacy" target="_blank">Discord Privacy Policy</a>. We do not collect
+                    or store data outside of the Discord platform,
+                    except in specific situations where we may store some data directly
+                    in the cloud, such as Google Drive, or on personal devices. This
+                    includes data shared with us during recruitment processes,
+                    contacting us outside of the platform, or other non-descript
+                    situations that require it. We keep records of all deleted or edited
+                    messages and actions performed on our server by users for moderation
+                    and security purposes. Personal Verification We do not store the
+                    photos you provide during verification. Your data is processed
+                    solely for the purpose of completing the verification. Once the
+                    verification process is finalized, only your
+                    <strong>date of birth</strong> is linked to the Mee6 bot and made
+                    publicly visible to other server members. The Mee6 bot handles data
+                    according to its own privacy policy. You can view Mee6's policy
+                    directly on their website. You can remove your date of birth from
+                    the bot at any time using the appropriate slash command. Please
+                    note, doing so will invalidate your verification status. If you have
+                    any questions or concerns, please contact us directly. Thank you for
+                    your understanding and trust.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hall of Fame Modal -->
+    <div id="halloffame-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 Hall of Fame</h2>
+                <button class="close-btn" onclick="closeModal('halloffame-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <h1 style="font-weight: 300; font-size: 28px">
+                    We would like to express our gratitude to the following people:
+                </h1>
+
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-top: 1.5em;
+            ">
+                    User of The Year:
+                </h1>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/543518302593482752-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Akiś</h3>
+                            <div class="profile-roles">
+                                <span class="role">User of The Year 2021</span>
+                            </div>
+                            <p class="profile-desc">543518302593482752</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/756482164262043720-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Kirka</h3>
+                            <div class="profile-roles">
+                                <span class="role">Staff of The Year 2021</span>
+                            </div>
+                            <p class="profile-desc">756482164262043720</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/543518302593482752-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Akiś</h3>
+                            <div class="profile-roles">
+                                <span class="role">User of The Year 2022</span>
+                            </div>
+                            <p class="profile-desc">543518302593482752</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/448894048586170369-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Sayouri</h3>
+                            <div class="profile-roles">
+                                <span class="role">Staff of The Year 2022</span>
+                            </div>
+                            <p class="profile-desc">448894048586170369</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/692026308049240074-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Kotek</h3>
+                            <div class="profile-roles">
+                                <span class="role">User of The Year 2023</span>
+                            </div>
+                            <p class="profile-desc">692026308049240074</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/448894048586170369-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Sayouri</h3>
+                            <div class="profile-roles">
+                                <span class="role">Staff of The Year 2023</span>
+                            </div>
+                            <p class="profile-desc">448894048586170369</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/692026308049240074-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Kotek</h3>
+                            <div class="profile-roles">
+                                <span class="role">User of The Year 2024</span>
+                            </div>
+                            <p class="profile-desc">692026308049240074</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/756482164262043720-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Kirka</h3>
+                            <div class="profile-roles">
+                                <span class="role">Staff of The Year 2024</span>
+                            </div>
+                            <p class="profile-desc">756482164262043720</p>
+                        </div>
+                    </div>
+                </div>
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-top: 1.5em;
+            ">
+                    Very Meritorious:
+                </h1>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/448894048586170369-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Sayouri</h3>
+                            <div class="profile-roles">
+                                <span class="role">Huge impact on server development</span>
+                            </div>
+                            <p class="profile-desc">448894048586170369</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/239932087925342209-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">MrsPatriciaS</h3>
+                            <div class="profile-roles">
+                                <span class="role">Huge financial support</span>
+                            </div>
+                            <p class="profile-desc">239932087925342209</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/543518302593482752-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Akiś</h3>
+                            <div class="profile-roles">
+                                <span class="role">Huge impact on server development</span>
+                            </div>
+                            <p class="profile-desc">543518302593482752</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/756482164262043720-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Kirka</h3>
+                            <div class="profile-roles">
+                                <span class="role">Huge impact on the early development of the server</span>
+                            </div>
+                            <p class="profile-desc">756482164262043720</p>
+                        </div>
+                    </div>
+                </div>
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-top: 1.5em;
+            ">
+                    Meritorious:
+                </h1>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/531129228532645888-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Jases</h3>
+                            <div class="profile-roles">
+                                <span class="role">Meritorious</span>
+                            </div>
+                            <p class="profile-desc">531129228532645888</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/376320713101148163-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Budyniowa</h3>
+                            <div class="profile-roles">
+                                <span class="role">Meritorious, <br />Retired Staff</span>
+                            </div>
+                            <p class="profile-desc">376320713101148163</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profiles-row">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/636210705632067586-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">VerciQ</h3>
+                            <div class="profile-roles">
+                                <span class="role">Meritorious, <br />Staff Member</span>
+                            </div>
+                            <p class="profile-desc">636210705632067586</p>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/692026308049240074-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Kotek</h3>
+                            <div class="profile-roles">
+                                <span class="role">Meritorious</span>
+                            </div>
+                            <p class="profile-desc">692026308049240074</p>
+                        </div>
+                    </div>
+                </div>
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-top: 0.5em;
+            ">
+                    Special Thanks:
+                </h1>
+                <div class="user-profiles-row">
+                    <div class="profile-card-big">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/239932087925342209-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">MrsPatriciaS</h3>
+                            <div class="profile-roles">
+                                <span class="role">The biggest financial support.</span>
+                            </div>
+                            <p class="profile-desc">
+                                Support time:<br />15/12/2020 - 01/08/2022<br />Total support
+                                amount:<br />780 PLN
+                            </p>
+                            <p class="profile-desc-id">239932087925342209</p>
+                        </div>
+                    </div>
+                    <div class="profile-card-big">
+                        <div class="profile-avatar">
+                            <img src="media/users-logo/1142127344862122125-logo.png" alt="User avatar"
+                                onerror="this.onerror=null;this.src='media/users-logo/discord.ico'" />
+                        </div>
+                        <div class="profile-info">
+                            <h3 class="profile-username">Lucky Luke</h3>
+                            <div class="profile-roles">
+                                <span class="role">Giant fundraising support for one of our staff members' cat
+                                    surgery.</span>
+                            </div>
+                            <p class="profile-desc">
+                                Support date: 16.11.2024<br />Total support amount:<br />1800
+                                PLN (60% of goal)
+                            </p>
+                            <p class="profile-desc-id">1142127344862122125</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="counterweight"></div>
         </div>
-
-        <div class="excavator">
-            <div class="track"></div>
-            <div class="body"></div>
-            <div class="cabin"></div>
-            <div class="beacon"></div>
-            <div class="arm">
-                <div class="boom"></div>
-                <div class="stick"></div>
-                <div class="bucket"></div>
+    </div>
+    <!-- Roles Modal -->
+    <div id="roles-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Roles benefits</h2>
+                <button class="close-btn" onclick="closeModal('roles-modal')">
+                    &times;
+                </button>
             </div>
-            <div class="puff p1"></div>
-            <div class="puff p2"></div>
-            <div class="puff p3"></div>
-        </div>
-
-        <div class="tape tape1"></div>
-        <div class="fence"></div>
-        <!-- cones parade -->
-        <div class="cone" style="left: 8vw; transform: rotate(-2deg);"></div>
-        <div class="cone" style="left: 12vw; transform: rotate(1deg);"></div>
-        <div class="cone" style="left: 16vw; transform: rotate(-1deg);"></div>
-        <div class="cone" style="left: 20vw; transform: rotate(2deg);"></div>
-        <div class="cone" style="left: 24vw;"></div>
-        <div class="cone" style="left: 28vw; transform: rotate(-1deg);"></div>
-        <div class="cone" style="left: 32vw;"></div>
-        <div class="cone" style="left: 35vw; transform: rotate(1deg);"></div>
-        <div class="cone" style="left: 38vw; transform: rotate(-2deg);"></div>
-        <div class="cone" style="left: 42vw; transform: rotate(1deg);"></div>
-        <div class="cone" style="left: 46vw;"></div>
-        <div class="cone" style="left: 49vw; transform: rotate(-1deg);"></div>
-        <div class="cone" style="left: 52vw;"></div>
-        <div class="cone" style="left: 56vw; transform: rotate(1deg);"></div>
-        <div class="cone" style="left: 60vw; transform: rotate(-1deg);"></div>
-        <div class="cone" style="left: 64vw;"></div>
-        <div class="cone" style="left: 68vw; transform: rotate(2deg);"></div>
-        <div class="cone" style="left: 72vw; transform: rotate(-2deg);"></div>
-        <div class="cone" style="left: 76vw; transform: rotate(1deg);"></div>
-        <div class="cone" style="left: 80vw;"></div>
-        <div class="cone" style="left: 84vw; transform: rotate(-1deg);"></div>
-        <div class="cone" style="left: 88vw; transform: rotate(1deg);"></div>
-        <div class="sign">UNDER CONSTRUCTION</div>
-        <!-- Krecik the mole -->
-        <div class="mole">
-            <div class="burrow"></div>
-            <div class="body">
-                <div class="head">
-                    <div class="nose"></div>
-                    <div class="eyes open"></div>
-                    <div class="eyes closed"></div>
+            <div class="profile-content">
+                <div class="modal-placeholder">
+                    This module's content is not currently available. Please check back
+                    at a later time.
                 </div>
-                <div class="paw left"></div>
-                <div class="paw right"></div>
             </div>
-            <div class="zz z1">Z</div>
-            <div class="zz z2">Z</div>
-            <div class="zz z3">Z</div>
         </div>
-        <div class="ground"></div>
     </div>
-    <div class="clock" id="clock">--:--:--</div>
-    <div class="phase-controls" id="phaseControls" title="Temporarily set scene phase (resets after 30s)">
-        <button type="button" data-phase="sunrise" aria-label="Sunrise">🌅</button>
-        <button type="button" data-phase="day" aria-label="Day">☀️</button>
-        <button type="button" data-phase="moonrise" aria-label="Moonrise">🌇</button>
-        <button type="button" data-phase="night" aria-label="Night">🌙</button>
+    <!-- Boosters Modal -->
+    <div id="boosters-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚀 Server Boosters</h2>
+                <button class="close-btn" onclick="closeModal('boosters-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <div id="boost-embed"></div>
+                <script src="subpages/BoostersPage/boosters-data.js"></script>
+                <script src="subpages/BoostersPage/boosters.js"></script>
+            </div>
+        </div>
     </div>
-    <div class="jpii-overlay" id="jpiiOverlay" aria-hidden="true">
-        <img src="jpii.jpeg" alt="John Paul II">
+    <!-- BugHunters Modal -->
+    <div id="bughunters-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👾 Bug Hunters</h2>
+                <button class="close-btn" onclick="closeModal('bughunters-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <div id="bh-embed"></div>
+                <script src="subpages/BugHuntersPage/bughunters-data.js"></script>
+                <script src="subpages/BugHuntersPage/bughunters.js"></script>
+            </div>
+        </div>
     </div>
-    <div class="notice-sign">
-        <h1>NoName Squad</h1>
-        <h2>Website Under Construction Notice</h2>
-        <p><strong>Hi, welcome to NoName Squad!</strong><br><br>We're rebuilding our website. You may experience brief
-            downtime during this
-            maintenance, since <strong>we're making some exciting updates</strong> and you can see this page - that
-            means
-            <strong>we're almost there</strong>.<br>Until this page will be lunched, you can check our old <a
-                href="https://sites.google.com/view/noname-squad/home">website</a>. Alternatively, you can visit the <a
-                href="https://nnamesquad.top/index2">NEW</a>
-            beta version of the website—it's not finished, not fully compatible with phones, and has bugs—but it's
-            there.<br><br>Thank you for your patience and understanding!<br><br>Best regards,<br>NoName Squad Team
-        </p>
+    <!-- Partnerships Modal -->
+    <div id="partnerships-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🤝 Partnerships</h2>
+                <button class="close-btn" onclick="closeModal('partnerships-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <div class="modal-placeholder">
+                    This module's content is not currently available. Please check back
+                    at a later time.
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="index.js"></script>
+    <!-- Our Bots Modal -->
+    <div id="ourbots-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🤖 Our Bots</h2>
+                <button class="close-btn" onclick="closeModal('ourbots-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <div class="modal-placeholder">
+                    This module's content is not currently available. Please check back
+                    at a later time.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Store Modal -->
+    <div id="store-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Server Store</h2>
+                <button class="close-btn" onclick="closeModal('store-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <h1 style="font-weight: 400; font-size: 28px">
+                    Donate to unlock exclusive roles and keep the server thriving!
+                </h1>
+                <p style="
+              font-weight: 200;
+              font-size: 16px;
+              text-align: center;
+              color: var(--tos-h1-discord);
+            ">
+                    Please read the note "Payment & Policy Information" before you make
+                    purchases.<br />
+                </p>
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    💖 General Support (Tip)
+                </h2>
+                <p>
+                    Support us with <strong>any amount</strong> of your choice. Every bit helps us grow
+                    and stay online! For this support, you will receive the role of
+                    <span style="color: #5c5dff; font-weight: bold; display: inline-block">@（💸）Donator</span>
+                    for a period of 100 days.
+                </p>
+                <div class="shop-buttons">
+                    <button onclick="window.open('https://donate.stripe.com/fZe4ic7Om1kp1HO6oE', '_blank')">💳 DONATE (PLN)</button>
+                    <button onclick="window.open('https://donate.stripe.com/aEUdSM0lUbZ31HOfZf', '_blank')">💳 DONATE (CZK)</button>
+                    <button onclick="window.open('https://donate.stripe.com/28obKEfgO0glaek9AS', '_blank')">💳 DONATE (EUR)</button>
+                    <button onclick="window.open('https://paypal.me/sayouri65', '_blank')">💰 DONATE (PayPal)</button>
+                </div>
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    🌐 Website companion (Tip)
+                </h2>
+                <p>
+                    Support us with <strong>$7.40 USD</strong> and help cover some of the costs
+                    associated with maintaining our website online. For this support,
+                    you will receive the role of
+                    <span style="color: #f1c40f; font-weight: bold; display: inline-block">@（💸）Website companion</span>
+                    for a period of 365 days.
+                </p>
+                <div class="shop-buttons">
+                    <button onclick="window.open('https://donate.stripe.com/9AQ2a42u26EJgCIbJ3', '_blank')">💳 DONATE</button>
+                </div>
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    👑 Prestige (Tip)
+                </h2>
+                <p>
+                    Support us with <strong>$500 USD</strong> and help cover a most of the costs
+                    associated with everything. For this support, you will receive the
+                    role of
+                    <span style="color: #fbac09; font-weight: bold; display: inline-block">@👑ˇPrestige (500$)</span>
+                    for a lifetime. Though leaving the server will result in the
+                    permanent loss of the role.
+                </p>
+                <div class="shop-buttons">
+                    <button disabled>👑 Contact the server owner to provide this donation</button>
+                </div>
+
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    🥇 Deserved Supporter — 70 PLN
+                </h2>
+                <p>
+                    The highest level of support! Your generosity means the world to us,
+                    and with your contribution, we can achieve even more. We're
+                    incredibly grateful for your incredible support! In return, you will
+                    receive the rank of
+                    <span style="color: #bd7d35; font-weight: bold; display: inline-block">@（💵）Deserved
+                        Supporter</span>
+                    for a period of 30 days.
+                </p>
+                <div class="shop-buttons">
+                    <button onclick="window.open('https://donate.stripe.com/eVabKEgkS2otgCI8wS', '_blank')">💳 One Time Payment (70 PLN)</button>
+                    <button onclick="window.open('https://buy.stripe.com/eVa7uo2u2fbffyEdRd', '_blank')">🔄 Monthly Subscription (70 PLN)</button>
+                </div>
+
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    🥈 Supporter — 40 PLN
+                </h2>
+                <p>
+                    A significant level of support! Your contribution is highly
+                    appreciated and will make a real difference in helping us continue
+                    our work. In return, you will receive the rank of
+                    <span style="color: #cb914b; font-weight: bold; display: inline-block">@（💵）Supporter</span>
+                    for a period of 30 days.
+                </p>
+                <div class="shop-buttons">
+                    <button onclick="window.open('https://donate.stripe.com/9AQdSMfgO2ot9agbJ6', '_blank')">💳 One Time Payment (40 PLN)</button>
+                    <button onclick="window.open('https://buy.stripe.com/7sI3e86Ki2otcms00p', '_blank')">🔄 Monthly Subscription (40 PLN)</button>
+                </div>
+
+
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    🥉 Symbolic Supporter — 10 PLN
+                </h2>
+                <p>
+                    A wonderful gesture of support! Every little bit helps, and your
+                    contribution is truly valued by us. In return, you will receive the
+                    rank of
+                    <span style="color: #daa661; font-weight: bold; display: inline-block">@（💵）Symbolic
+                        Supporter</span>
+                    for a period of 30 days.
+                </p>
+
+                <div class="shop-buttons">
+                    <button onclick="window.open('https://donate.stripe.com/aEUg0U7Omd379ag14w', '_blank')">💳 One Time Payment (10 PLN)</button>
+                    <button onclick="window.open('https://buy.stripe.com/dR63e86Ki1kp5Y4eVn', '_blank')">🔄 Monthly Subscription (10 PLN)</button>
+                </div>
+
+                <h2 style="
+              font-weight: 300;
+              font-size: 24px;
+              color: var(--accent-color);
+              padding-bottom: 0.05em;
+              text-align: left;
+              padding-top: 0.3em;
+            ">
+                    💲 Status Premium — 30 PLN
+                </h2>
+                <p>
+                    By purchasing the PREMIUM status, you’re directly supporting the
+                    growth and development of our community. Your contribution helps us
+                    improve and expand the experience for everyone. In return, you’ll
+                    unlock perks and gain recognition as a valued supporter with
+                    <span style="color: #ffad00; font-weight: bold; display: inline-block">@（💲）Premium</span>
+                    role for 30 days. Join PREMIUM and make a real difference today!
+                </p>
+                <div class="shop-buttons">
+                    <button disabled>💳 One Time Payment (COMING SOON)</button>
+                    <button disabled>🔄 Monthly Subscription (COMING SOON)</button>
+                </div>
+
+
+                <h3 style="font-weight: 400; font-size: 24px; text-align: center; color: var(--tos-h1-discord); margin-top: 1.5em">
+                    ⚠️ Payment & Policy Information
+                </h3>
+                <p>
+                    <strong>No refunds:</strong> By making a purchase, you agree that no refunds will be provided under any circumstances.
+                </p>
+                <p>
+                    <strong>Final price notice:</strong> The total amount may vary depending on your selected payment method, currency, applicable service fees, or discounts.
+                </p>
+                <p>
+                    <strong>Role ownership:</strong> Purchasing a role does not make you its owner. You are granted access to (have) it for a specified period only.
+                </p>
+                <p>
+                    <strong>VAT exemption notice:</strong> This service is exempt from value-added tax (VAT) under Article 113(1) of the Polish VAT Act and § 94(1) of the Czech VAT Act.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collaborators Modal -->
+    <div id="collaborators-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚧 Collaborators</h2>
+                <button class="close-btn" onclick="closeModal('collaborators-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <div class="modal-placeholder">
+                    This module's content is not currently available. Please check back
+                    at a later time.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📞 Contact Information</h2>
+                <button class="close-btn" onclick="closeModal('contact-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <h1 style="font-weight: 300; font-size: 28px">
+                    Get in Touch with Us!
+                </h1>
+                <h2 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+              text-align: left;
+            ">
+                    For legal, technical, or website-related matters:
+                </h2>
+                <p>
+                    <a href="mailto:contact@nnamesquad.top">contact@nnamesquad.top</a> -
+                    This email does not handle appeals or support requests.
+                </p>
+                <h2 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+              text-align: left;
+            ">
+                    For support requests:
+                </h2>
+                <p>
+                    <a href="mailto:support@nnamesquad.top">support@nnamesquad.top</a>
+                </p>
+                <h2 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+              text-align: left;
+            ">
+                    For appeals:
+                </h2>
+                <p>
+                    <a href="mailto:appeals@nnamesquad.top">appeals@nnamesquad.top</a>
+                </p>
+                <h2 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-bottom: 0.1em;
+              text-align: left;
+            ">
+                    Main email address:
+                </h2>
+                <p>
+                    <a href="mailto:nnamesquad@gmail.com">nnamesquad@gmail.com</a> - We
+                    will never contact you from any address other than this one.
+                </p>
+                <div class="footer">
+                    <h2 style="font-size: 14px; color: var(--tos-h1-discord)">
+                        ⚠️ Please send your request to the correct email address.<br />Messages
+                        sent to the wrong department may not be answered.
+                    </h2>
+
+                    <h3>Reply Policy</h3>
+                    <ul>
+                        <li>
+                            We may not respond to messages that do not require a reply,
+                            contain spam, offensive content, or are unserious.
+                        </li>
+                        <li>Emails sent to unofficial addresses may be ignored.</li>
+                    </ul>
+
+                    <h3>Archiving & Monitoring</h3>
+                    <ul>
+                        <li>
+                            All emails are archived, including sender address, content, and
+                            attachments.
+                        </li>
+                        <li>Deletion requests cannot be honored.</li>
+                        <li>
+                            All emails are monitored for security and spam; abuse results in
+                            blocking without appeal.
+                        </li>
+                    </ul>
+
+                    <h3>Privacy & Transparency</h3>
+                    <ul>
+                        <li>
+                            The CEO and designated staff can access all incoming emails.
+                        </li>
+                        <li>
+                            Emails are not private messages—please avoid sharing sensitive
+                            information.
+                        </li>
+                        <li>
+                            Inbound mail is processed by our hosting provider under their
+                            privacy policy.
+                        </li>
+                        <li>
+                            Outgoing messages from <b>nnamesquad@gmail.com</b> are sent
+                            securely and handled confidentially. If you receive an email
+                            from any other address claiming to be us, it may not be genuine.
+                            Please contact us (and forward that email) to verify
+                            authenticity.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 404 Not Found Modal (for invalid deep-link sections) -->
+    <div id="notfound-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>❌ 404 — Section Not Found</h2>
+                <button class="close-btn" onclick="closeModal('notfound-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <div id="notfound-body" class="modal-placeholder">
+                    The requested section was not found.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staff Modal -->
+    <!-- REMEMBER ITS MUST BE THE LAST MODAL -->
+    <div id="staff-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👥 Staff Members</h2>
+                <button class="close-btn" onclick="closeModal('staff-modal')">
+                    &times;
+                </button>
+            </div>
+            <div class="profile-content">
+                <h1 style="font-weight: 300; font-size: 28px">
+                    People to whom we owe security!
+                </h1>
+                <h1 style="
+              font-weight: 300;
+              font-size: 28px;
+              color: var(--tos-h1-discord);
+              padding-top: 1.5em;
+            ">
+                    Meet our team:
+                </h1>
+                <section id="auto-gen-staffusers"></section>
+                <script src="staff-data.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particles canvas --><canvas id="particles-canvas"></canvas>
+
+    <script src="script.js"></script>
+    <script>
+        // Inner modal logic for TOS modal
+        function openInnerModal(id) {
+            // Hide all inner modals first
+            document.querySelectorAll(".inner-modal").forEach((modal) => {
+                modal.classList.add("hidden");
+            });
+            // Show the requested inner modal
+            document.getElementById(id).classList.remove("hidden");
+        }
+        function closeInnerModal(id) {
+            document.getElementById(id).classList.add("hidden");
+        }
+    </script>
 </body>
 
 </html>

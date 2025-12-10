@@ -212,7 +212,7 @@ const rules = {
         "Wykorzystywanie multikont w celu zyskania jakichkolwiek korzyści bądź omijania kar jest surowo zabronione, a każde multikonto powinno zostać zgłoszone do administracji.",
         "Korzystanie z selfbot'ów jest kategorycznie zabronione, a ich wykrycie będzie skutkowało bezwarunkowym banem.",
         "Korzystanie z zmodyfikowanego klienta Discord, jego modyfikowanie, bądź posiadanie pluginów wiązać się będzie z bezwarunkowym banem.",
-        `Każdy użytkownik może apelować się od nadanej mu kary. Z wyłączeniem kar automatycznych bądź oznaczonych jako "[BMA]". O możliwość apelacji od mute/ban będziecie informowani przez <a href="https://discord.id/?prefill=155149108183695360">@Dyno#3861</a> w wiadomości prywatnej, więc upewnijcie się że macie możliwość otrzymywania wiadomości prywatnych od użytkowników z naszego serwera.`,
+        `Każdy użytkownik może apelować się od nadanej mu kary. Z wyłączeniem kar automatycznych bądź oznaczonych jako "[BMA]". O możliwość apelacji od mute/ban będziecie informowani przez <a>@Dyno#3861</a> w wiadomości prywatnej, więc upewnijcie się że macie możliwość otrzymywania wiadomości prywatnych od użytkowników z naszego serwera.`,
         "Każdy użytkownik może rekrutować się na dostępne stanowiska, o ile spełnia on wymagania.",
         "Każdy użytkownik dołączający na serwer musi dobrać sobie role widoczne w ekranie wprowadzenia. Użytkownicy którzy dołączyli na serwer przed dodaniem ekranu muszą odpalić go za pomocą specjalnego kanału #Kanały i role znajdującego się na samej górze listy kanałów i dobrać sobie role.",
         "Jesteśmy uprzejmi i tolerancyjni dla siebie nawzajem, każdy zasługuje na szacunek."

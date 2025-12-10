@@ -50,7 +50,7 @@ for (let i = 0; i < 3 && i < visibleBoosters.length; i++) {
   container.innerHTML += `
   <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">
   ${medal} TOP ${i + 1}</h1>
-      <p><a target="_blank" target="_blank" href="https://discord.id/?prefill=${booster.id}">@${booster.id}</a><br><strong>${booster.boosts}</strong> 🚀</p>
+      <p>@${booster.id}<br><strong>${booster.boosts}</strong> 🚀</p>
   `;
 }
 
@@ -58,13 +58,13 @@ for (let i = 0; i < 3 && i < visibleBoosters.length; i++) {
 let rest = "";
 for (let i = 3; i < visibleBoosters.length; i++) {
   const booster = visibleBoosters[i];
-  rest += `${i + 1}. <a target="_blank" target="_blank" href="https://discord.id/?prefill=${booster.id}">@${booster.id}</a> - <strong>${booster.boosts}</strong> 🚀<br>`;
+  rest += `${i + 1}. @${booster.id} - <strong>${booster.boosts}</strong> 🚀<br>`;
 }
 
 container.innerHTML += `
     <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">🚀 Leaderboard</h1>
     <p>${rest}</p>
   <div class="boosters-footer-info">
-  ⚠ Statistics are tracked manually and may differ from Discord’s official boost counts. Boosts are counted by transfers, and since 2025 also by duration. If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count. Personal statistics can be permanently deleted on request. Due to technical limits, only user IDs are shown—clicking an ID opens a 3rd-party profile lookup (not affiliated with us or Discord).
+  ⚠ Statistics are tracked manually and may differ from Discord’s official boost counts. Boosts are counted by transfers, and since 2025 also by duration. If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count. Personal statistics can be permanently deleted on request. Due to technical limits, only user IDs are shown.
   </div>
 `;

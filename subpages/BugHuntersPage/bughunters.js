@@ -65,7 +65,7 @@ function renderBugHunters() {
         for (const id of fixedOrder) {
             const hunter = specialHunters.find(h => h.id === id);
             if (!hunter) continue;
-            html += `<a target="_blank" href="https://discord.id/?prefill=${hunter.id}">@${hunter.id}</a><br>`;
+            html += `@${hunter.id}<br>`;
         }
         container2.innerHTML += `
       <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">
@@ -80,7 +80,7 @@ function renderBugHunters() {
         if (group.length === 0) return;
         let html = "";
         for (const h of group) {
-            html += `<a target="_blank" href="https://discord.id/?prefill=${h.id}">@${h.id}</a> – <strong>${h.bugs}</strong> 👾<br>`;
+            html += `@${h.id} - <strong>${h.bugs}</strong> 👾<br>`;
         }
         container2.innerHTML += `
       <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;"><img src="${icon}" width="${width}" height="${height}" alt="${alt}"> ${label}</h1>

@@ -1044,3 +1044,94 @@ li::before {
 .soon-pulse {
     animation: soon-pulse 0.5s ease-in-out 3;
 }
+
+/* Shop buttons styling */
+.shop-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    max-width: 100%;
+}
+
+/* For 1 button: take full width */
+.shop-buttons:has(button:only-child) {
+    grid-template-columns: 1fr;
+}
+
+/* For 2 buttons: 50% each */
+.shop-buttons:has(button:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* For 3 buttons: 33% each */
+.shop-buttons:has(button:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* For 4 buttons: 25% each */
+.shop-buttons:has(button:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* For 5+ buttons: max 5 per row */
+.shop-buttons:has(button:nth-child(5)) {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.shop-buttons button {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #e6e600 100%);
+    color: #1a1b23;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(252, 252, 43, 0.2);
+    border: 1px solid rgba(252, 252, 43, 0.3);
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-buttons button:hover {
+    background: linear-gradient(135deg, #e6e600 0%, var(--accent-color) 100%);
+    box-shadow: 0 6px 24px rgba(252, 252, 43, 0.35);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.shop-buttons button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 8px rgba(252, 252, 43, 0.2);
+}
+
+/* Special styling for non-clickable shop buttons (text only) */
+.shop-buttons button:disabled,
+.shop-buttons .shop-info {
+    background: var(--secondary-bg);
+    color: var(--secondary-text);
+    cursor: default;
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+
+.shop-buttons button:disabled:hover,
+.shop-buttons .shop-info:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Responsive adjustments for shop buttons */
+@media (max-width: 768px) {
+    .shop-buttons button {
+        font-size: 0.875rem;
+        padding: 0.75rem 1.25rem;
+    }
+}
