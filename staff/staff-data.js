@@ -45,7 +45,7 @@ const staffData = [
       "English (ILR Level 2)",
       "German (ILR Level 0+)",
     ],
-    about: `A więc tak z luźniejszych rzeczy to poprostu kocham grać w wszelkie gry komputerowe! A co za tym poszło jako m.in. gracz "League of Legends". Mój początek z discordem był dośc prosty - lekcje zdalne, anime, cosplay oraz roleplay i jakoś tak wszystko się ładnie razem połączyło. Mam głównego oc'ka zwanego "Ash" :3. Z faktu, ze Bóg nie był skłonny dać mi talentu artystycznego, postać Ash'a do dziś jest po prostu mną w formie cosplay'u. Stał się on moim "comfort character". I chyba to tyle co mogę podać jako krótkie przestawienie się. Zachęcam do pisania na serwerze, gdzie może złapiemy większy kontakt! <3 Gej`,
+    about: `Hey!! Krótko i na temat się Wam przedstawię - mam na imię Weronika chociaż możecie spotykać mnie też pod nazwą "VerciQ" lub "Ash". Lubię a wręcz kocham grać we wszystkie możliwe gry komputerowe. Nie ograniczam się co do ich gatunku więc jestem otwarta na różne propozycje gier. Taka sama kwestia jest z muzyką, słucham wszystkiego co wpadnie mi w ucho chooociaż preferuję cięższe brzmienie. Zachęcam do pisania na serwerze bo tam najpewniej mnie lepiej poznacie niż z tego krótkiego opisu. <3`,
     contacts: [
       { type: "email", value: "verciq@nnamesquad.top" },
       { type: "facebook", value: "https://www.facebook.com/werka.ash" },
