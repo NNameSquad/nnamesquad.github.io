@@ -356,6 +356,7 @@ function fillStaffProfiles() {
           : null;
       if (!staff) staff = window.staffData[idx] || null;
       if (!staff) return;
+      card.id = staff.id;
       card.innerHTML = buildCardHtml(staff);
     });
     return;
@@ -368,6 +369,7 @@ function fillStaffProfiles() {
   window.staffData.forEach((staff) => {
     const wrapper = document.createElement("div");
     wrapper.className = "staff-profile-card";
+    wrapper.id = staff.id;
     wrapper.innerHTML = buildCardHtml(staff).replace(
       new RegExp(`media/${staff.id}-staff.png`, "g"),
       `media/${staff.id}-staff.png`,
