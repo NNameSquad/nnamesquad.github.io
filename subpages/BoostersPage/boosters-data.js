@@ -1,8 +1,8 @@
 const boosters_data = [
-  { id: "448894048586170369", boosts: 46 }, //Updated in advance for date 2026-02-05
-  { id: "756482164262043720", boosts: 39 }, //Updated in advance for date 2026-02-16
+  { id: "448894048586170369", boosts: 54 }, //Updated in advance for date 2026-06-05
+  { id: "756482164262043720", boosts: 47 }, //Updated in advance for date 2026-06-16
+  { id: "692026308049240074", boosts: 12 },
   { id: "239932087925342209", boosts: 10 },
-  { id: "692026308049240074", boosts: 10 },
   { id: "531129228532645888", boosts: 6 },
   { id: "429661571019571200", boosts: 6 },
   { id: "439828776659058688", boosts: 4 },
@@ -19,4 +19,4 @@ const boosters_data = [
   { id: "0", boosts: 3 }, // Users waho deleted their account or asked to remove their stats
 ];
 
-const boosters_updatetime = "2026-01-21T23:48:00+02:00"; // leave +02:00 for Warsaw timezone
+const boosters_updatetime = "2026-06-16T12:00:00+02:00"; // leave +02:00 for Warsaw timezone
