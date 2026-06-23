@@ -17,7 +17,8 @@ const boosters_data = [
   { id: "613661919676596225", boosts: 1 },
   { id: "657650990786281486", boosts: 1 },
   { id: "478496812811026433", boosts: 1 },
-  { id: "0", boosts: 3 }, // Users waho deleted their account or asked to remove their stats
+  { id: "0", boosts: 3 }
 ];
 
 const boosters_updatetime = "2026-06-16T11:24:00+02:00"; // leave +02:00 for Warsaw timezone
+// ID 0 means Users who deleted their account or asked to remove their stats
