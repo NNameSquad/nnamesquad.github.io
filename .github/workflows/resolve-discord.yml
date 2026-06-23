@@ -2,7 +2,7 @@ name: Resolve Discord Usernames
 on:
   schedule:
     - cron: '0 0 * * *' # Raz na dobę o północy
-  workflow_dispatch: # Pozwala odpalić ręcznie z panelu GitHub
+  workflow_dispatch:
 
 jobs:
   resolve:
@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Fetch Discord Usernames
         env:
@@ -53,7 +53,6 @@ jobs:
             }
           }
 
-          // Wyciągamy ID
           extractIdsFromJs("subpages/BoostersPage/boosters-data.js", "boosters_data");
           extractIdsFromJs("subpages/BugHuntersPage/bughunters-data.js", "bghunters_data");
 
@@ -97,9 +96,15 @@ jobs:
           }
 
           if(ids.size > 0) { 
-            fetchUsers(); 
+            fetchUsers().then(() => {
+              process.exit(0);
+            }).catch((err) => {
+              console.error("Błąd wewnątrz fetchUsers:", err);
+              process.exit(1);
+            });
           } else { 
             console.log("[DEBUG] Brak ID do pobrania. Przerywam tworzenie pliku."); 
+            process.exit(0);
           }
           '
 
