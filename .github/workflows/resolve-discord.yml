@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-node: '20'
+          node-version: '20'
 
       - name: Fetch Discord Usernames
         env:
@@ -22,61 +22,63 @@ jobs:
         run: |
           node -e '
           const fs = require("fs");
-          
-          // 1. Wczytujemy Twoje ID z pliku boosters-data.js
-          const fileContent = fs.readFileSync("subpages/BoostersPage/boosters-data.js", "utf8");
-          
-          // Wyciągamy tablicę obiektów za pomocą prostego Regexa
-          const match = fileContent.match(/boosters_data\s*=\s*(\[(\s|\S)*?\]);/);
-          if (!match) {
-            console.error("Nie znaleziono boosters_data w pliku!");
-            process.exit(1);
-          }
-          
-          // Bezpieczny parse tablicy (usuwamy ewentualne komentarze js przed parse)
-          const cleanJson = match[1].replace(/\/\/.*$/gm, "");
-          // Zmieniamy zapis obiektów JS na poprawny JSON (klucze w cudzysłowach)
-          const formattedJson = cleanJson.replace(/(id|boosts):/g, "\"$1\":");
-          const boosters = JSON.parse(formattedJson);
-          
-          const resolved = {};
-          
-          async function fetchUsers() {
-            for (const user of boosters) {
-              if (user.id === "0") continue;
+          const vm = require("vm");
+          const ids = new Set();
+
+          // Bezpieczne wczytywanie zmiennych z plików JS za pomocą wbudowanego modułu VM
+          function extractIdsFromJs(filePath, variableName) {
+            if (!fs.existsSync(filePath)) return;
+            try {
+              const code = fs.readFileSync(filePath, "utf8");
+              const context = {};
+              vm.createContext(context);
+              vm.runInContext(code, context);
               
-              console.log(`Pobieranie użytkownika: ${user.id}`);
+              const data = context[variableName];
+              if (Array.isArray(data)) {
+                data.forEach(item => { if(item.id && item.id !== "0") ids.add(item.id); });
+              }
+            } catch (e) {
+              console.error("Błąd odczytu zmiennej " + variableName + " z pliku " + filePath, e);
+            }
+          }
+
+          // Wyciągamy ID z obu plików danych (używając prawdziwych nazw zmiennych)
+          extractIdsFromJs("subpages/BoostersPage/boosters-data.js", "boosters_data");
+          extractIdsFromJs("subpages/BugHuntersPage/bughunters-data.js", "bghunters_data");
+
+          const resolved = {};
+
+          async function fetchUsers() {
+            for (const id of ids) {
+              console.log(`Pobieranie użytkownika: ${id}`);
               try {
-                const res = await fetch(`https://discord.com/api/v10/users/${user.id}`, {
+                const res = await fetch(`https://discord.com/api/v10/users/${id}`, {
                   headers: { "Authorization": `Bot ${process.env.DISCORD_TOKEN}` }
                 });
-                
                 if (res.ok) {
                   const data = await res.json();
-                  // Zapisujemy global_name (np. Kacper) lub zwykły username (np. kacper123)
-                  resolved[user.id] = data.global_name || data.username;
+                  resolved[id] = data.global_name || data.username;
                 } else {
-                  resolved[user.id] = `ID: ${user.id}`;
+                  resolved[id] = `ID: ${id}`;
                 }
               } catch (err) {
-                resolved[user.id] = `ID: ${user.id}`;
+                resolved[id] = `ID: ${id}`;
               }
-              // Czekamy 0.5s, aby nie przekroczyć limitów API Discorda (Rate Limits)
-              await new Promise(r => setTimeout(r, 500));
+              await new Promise(r => setTimeout(r, 500)); // Ochrona przed rate-limitem
             }
             
-            // Zapisujemy wynik do pliku, który będzie dostępny dla Twojego JS
             fs.writeFileSync("subpages/BoostersPage/resolved-users.json", JSON.stringify(resolved, null, 2));
             console.log("Zapisano nazwy użytkowników!");
           }
-          
+
           if(ids.size > 0) { fetchUsers(); } else { console.log("Brak ID do pobrania."); }
           '
+
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Zmiana ścieżki dla git add
           git add subpages/BoostersPage/resolved-users.json
           git diff-index --quiet HEAD || git commit -m "Chore: Auto-update Discord usernames [skip ci]"
           git push
