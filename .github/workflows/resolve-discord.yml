@@ -67,8 +67,14 @@ jobs:
               }
               await new Promise(r => setTimeout(r, 500)); // Ochrona przed rate-limitem
             }
+
+            // AUTOMATYCZNE TWORZENIE FOLDERU (jeśli nie istnieje)
+            const dir = "subpages/BoostersPage";
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir, { recursive: true });
+            }
             
-            fs.writeFileSync("subpages/BoostersPage/resolved-users.json", JSON.stringify(resolved, null, 2));
+            fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify(resolved, null, 2));
             console.log("Zapisano nazwy użytkowników!");
           }
 
@@ -79,6 +85,13 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add subpages/BoostersPage/resolved-users.json
-          git diff-index --quiet HEAD || git commit -m "Chore: Auto-update Discord usernames [skip ci]"
-          git push
+          
+          # Sprawdzamy czy plik istnieje, zanim dodamy go do gita
+          if [ -f "subpages/BoostersPage/resolved-users.json" ]; then
+            git add subpages/BoostersPage/resolved-users.json
+            git diff-index --quiet HEAD || git commit -m "Chore: Auto-update Discord usernames [skip ci]"
+            git push
+          else
+            echo "BŁĄD: Plik resolved-users.json nie został utworzony przez Node.js!"
+            exit 1
+          fi
