@@ -1,0 +1,82 @@
+name: Resolve Discord Usernames
+on:
+  schedule:
+    - cron: '0 0 * * *' # Raz na dobę o północy
+  workflow_dispatch: # Pozwala odpalić ręcznie z panelu GitHub
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-node: '20'
+
+      - name: Fetch Discord Usernames
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: |
+          node -e '
+          const fs = require("fs");
+          
+          // 1. Wczytujemy Twoje ID z pliku boosters-data.js
+          const fileContent = fs.readFileSync("subpages/BoostersPage/boosters-data.js", "utf8");
+          
+          // Wyciągamy tablicę obiektów za pomocą prostego Regexa
+          const match = fileContent.match(/boosters_data\s*=\s*(\[(\s|\S)*?\]);/);
+          if (!match) {
+            console.error("Nie znaleziono boosters_data w pliku!");
+            process.exit(1);
+          }
+          
+          // Bezpieczny parse tablicy (usuwamy ewentualne komentarze js przed parse)
+          const cleanJson = match[1].replace(/\/\/.*$/gm, "");
+          // Zmieniamy zapis obiektów JS na poprawny JSON (klucze w cudzysłowach)
+          const formattedJson = cleanJson.replace(/(id|boosts):/g, "\"$1\":");
+          const boosters = JSON.parse(formattedJson);
+          
+          const resolved = {};
+          
+          async function fetchUsers() {
+            for (const user of boosters) {
+              if (user.id === "0") continue;
+              
+              console.log(`Pobieranie użytkownika: ${user.id}`);
+              try {
+                const res = await fetch(`https://discord.com/api/v10/users/${user.id}`, {
+                  headers: { "Authorization": `Bot ${process.env.DISCORD_TOKEN}` }
+                });
+                
+                if (res.ok) {
+                  const data = await res.json();
+                  // Zapisujemy global_name (np. Kacper) lub zwykły username (np. kacper123)
+                  resolved[user.id] = data.global_name || data.username;
+                } else {
+                  resolved[user.id] = `ID: ${user.id}`;
+                }
+              } catch (err) {
+                resolved[user.id] = `ID: ${user.id}`;
+              }
+              // Czekamy 0.5s, aby nie przekroczyć limitów API Discorda (Rate Limits)
+              await new Promise(r => setTimeout(r, 500));
+            }
+            
+            // Zapisujemy wynik do pliku, który będzie dostępny dla Twojego JS
+            fs.writeFileSync("subpages/BoostersPage/resolved-users.json", JSON.stringify(resolved, null, 2));
+            console.log("Zapisano nazwy użytkowników!");
+          }
+          
+          fetchUsers();
+          '
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add subpages/BoostersPage/resolved-users.json
+          git diff-index --quiet HEAD || git commit -m "Chore: Auto-update Discord usernames [skip ci]"
+          git push

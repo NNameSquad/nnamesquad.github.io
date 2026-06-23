@@ -34,37 +34,58 @@ const visibleBoosters = _boosters.filter(b => b.id !== "0");
 // Sort visible boosters descending by boosts
 visibleBoosters.sort((a, b) => b.boosts - a.boosts);
 
-container.innerHTML = `
-  <h1 style="font-weight: 300; font-size: 28px;">🔮 History of boosters 🔮</h1>
-  <div class="boosters-summary-info">
-  <p><strong>Total:</strong> ${totalBoosts} 🚀</p>
-  <p><strong>Total value:</strong> ${boosters_value} USD (4.99$/each)</p>
-  <p><strong>Last updated:</strong> ${formattedDate} (Europe/Warsaw)</p>
-  </div>
-`;
+// GŁÓWNA FUNKCJA RENDERUJĄCA
+async function renderBoosters() {
+  let namesMapping = {};
+  
+  // Próbujemy pobrać wygenerowane przez GitHub Actions nazwy użytkowników
+  try {
+    const response = await fetch("subpages/BoostersPage/resolved-users.json");
+    if (response.ok) {
+      namesMapping = await response.json();
+    }
+  } catch (e) {
+    console.log("Nie udało się pobrać nazw, wyświetlam same ID.", e);
+  }
 
-// Render top 3 without id "0"
-for (let i = 0; i < 3 && i < visibleBoosters.length; i++) {
-  const medal = ["🥇", "🥈", "🥉"][i];
-  const booster = visibleBoosters[i];
+  // Funkcja pomocnicza zwracająca nazwę lub @ID jeśli nie ma w mapie
+  const getUserDisplayName = (id) => namesMapping[id] ? namesMapping[id] : `@${id}`;
+
+  container.innerHTML = `
+    <h1 style="font-weight: 300; font-size: 28px;">🔮 History of boosters 🔮</h1>
+    <div class="boosters-summary-info">
+    <p><strong>Total:</strong> ${totalBoosts} 🚀</p>
+    <p><strong>Total value:</strong> ${boosters_value} USD (4.99$/each)</p>
+    <p><strong>Last updated:</strong> ${formattedDate} (Europe/Warsaw)</p>
+    </div>
+  `;
+
+  // Render top 3 without id "0"
+  for (let i = 0; i < 3 && i < visibleBoosters.length; i++) {
+    const medal = ["🥇", "🥈", "🥉"][i];
+    const booster = visibleBoosters[i];
+    container.innerHTML += `
+    <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">
+    ${medal} TOP ${i + 1}</h1>
+        <p><strong>${getUserDisplayName(booster.id)}</strong><br><strong>${booster.boosts}</strong> 🚀</p>
+    `;
+  }
+
+  // Render rest of leaderboard without id "0"
+  let rest = "";
+  for (let i = 3; i < visibleBoosters.length; i++) {
+    const booster = visibleBoosters[i];
+    rest += `${i + 1}. <strong>${getUserDisplayName(booster.id)}</strong> - <strong>${booster.boosts}</strong> 🚀<br>`;
+  }
+
   container.innerHTML += `
-  <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">
-  ${medal} TOP ${i + 1}</h1>
-      <p>@${booster.id}<br><strong>${booster.boosts}</strong> 🚀</p>
+      <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">🚀 Leaderboard</h1>
+      <p>${rest}</p>
+    <div class="boosters-footer-info">
+    ⚠ Statistics are tracked manually and may differ from Discord’s official boost counts. Boosts are counted by transfers, and since 2025 also by duration. If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count. Personal statistics can be permanently deleted on request.
+    </div>
   `;
 }
 
-// Render rest of leaderboard without id "0"
-let rest = "";
-for (let i = 3; i < visibleBoosters.length; i++) {
-  const booster = visibleBoosters[i];
-  rest += `${i + 1}. @${booster.id} - <strong>${booster.boosts}</strong> 🚀<br>`;
-}
-
-container.innerHTML += `
-    <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">🚀 Leaderboard</h1>
-    <p>${rest}</p>
-  <div class="boosters-footer-info">
-  ⚠ Statistics are tracked manually and may differ from Discord’s official boost counts. Boosts are counted by transfers, and since 2025 also by duration. If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count. Personal statistics can be permanently deleted on request. Due to technical limits, only user IDs are shown.
-  </div>
-`;
+// Uruchomienie renderowania
+renderBoosters();
