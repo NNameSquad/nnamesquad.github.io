@@ -25,9 +25,12 @@ jobs:
           const vm = require("vm");
           const ids = new Set();
 
-          // Bezpieczne wczytywanie zmiennych z plików JS za pomocą wbudowanego modułu VM
           function extractIdsFromJs(filePath, variableName) {
-            if (!fs.existsSync(filePath)) return;
+            console.log(`[DEBUG] Próba odczytu pliku: ${filePath}`);
+            if (!fs.existsSync(filePath)) {
+              console.log(`[DEBUG] Plik nie istnieje: ${filePath}`);
+              return;
+            }
             try {
               const code = fs.readFileSync(filePath, "utf8");
               const context = {};
@@ -36,49 +39,68 @@ jobs:
               
               const data = context[variableName];
               if (Array.isArray(data)) {
-                data.forEach(item => { if(item.id && item.id !== "0") ids.add(item.id); });
+                console.log(`[DEBUG] Znaleziono tablicę ${variableName}. Liczba elementów: ${data.length}`);
+                data.forEach(item => { 
+                  if(item.id && item.id !== "0") {
+                    ids.add(item.id); 
+                  }
+                });
+              } else {
+                console.log(`[DEBUG] Zmienna ${variableName} nie jest tablicą lub nie istnieje w pliku.`);
               }
             } catch (e) {
-              console.error("Błąd odczytu zmiennej " + variableName + " z pliku " + filePath, e);
+              console.error(`[DEBUG] Błąd krytyczny podczas przetwarzania ${filePath}:`, e);
             }
           }
 
-          // Wyciągamy ID z obu plików danych (używając prawdziwych nazw zmiennych)
+          // Wyciągamy ID
           extractIdsFromJs("subpages/BoostersPage/boosters-data.js", "boosters_data");
           extractIdsFromJs("subpages/BugHuntersPage/bughunters-data.js", "bghunters_data");
+
+          console.log(`[DEBUG] Łącznie unikalnych ID do pobrania: ${ids.size}`);
 
           const resolved = {};
 
           async function fetchUsers() {
             for (const id of ids) {
-              console.log(`Pobieranie użytkownika: ${id}`);
+              console.log(`Pobieranie użytkownika z Discord API: ${id}`);
               try {
                 const res = await fetch(`https://discord.com/api/v10/users/${id}`, {
                   headers: { "Authorization": `Bot ${process.env.DISCORD_TOKEN}` }
                 });
+                
+                console.log(`[DEBUG] Status odpowiedzi Discord dla ${id}: ${res.status}`);
+                
                 if (res.ok) {
                   const data = await res.json();
                   resolved[id] = data.global_name || data.username;
+                  console.log(`[DEBUG] Sukces! Pobrano: ${resolved[id]}`);
                 } else {
                   resolved[id] = `ID: ${id}`;
+                  const errText = await res.text();
+                  console.log(`[DEBUG] Discord zwrócił błąd dla ${id}: ${errText}`);
                 }
               } catch (err) {
                 resolved[id] = `ID: ${id}`;
+                console.error(`[DEBUG] Błąd sieciowy dla ${id}:`, err);
               }
-              await new Promise(r => setTimeout(r, 500)); // Ochrona przed rate-limitem
+              await new Promise(r => setTimeout(r, 500));
             }
-
-            // AUTOMATYCZNE TWORZENIE FOLDERU (jeśli nie istnieje)
+            
             const dir = "subpages/BoostersPage";
             if (!fs.existsSync(dir)){
                 fs.mkdirSync(dir, { recursive: true });
             }
             
             fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify(resolved, null, 2));
-            console.log("Zapisano nazwy użytkowników!");
+            console.log("[DEBUG] Plik resolved-users.json został pomyślnie zapisany na dysku.");
           }
 
-          if(ids.size > 0) { fetchUsers(); } else { console.log("Brak ID do pobrania."); }
+          if(ids.size > 0) { 
+            fetchUsers(); 
+          } else { 
+            console.log("[DEBUG] Brak ID do pobrania. Przerywam tworzenie pliku."); 
+          }
           '
 
       - name: Commit and Push changes
@@ -86,7 +108,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Sprawdzamy czy plik istnieje, zanim dodamy go do gita
           if [ -f "subpages/BoostersPage/resolved-users.json" ]; then
             git add subpages/BoostersPage/resolved-users.json
             git diff-index --quiet HEAD || git commit -m "Chore: Auto-update Discord usernames [skip ci]"
