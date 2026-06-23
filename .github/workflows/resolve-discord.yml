@@ -70,13 +70,13 @@ jobs:
             console.log("Zapisano nazwy użytkowników!");
           }
           
-          fetchUsers();
+          if(ids.size > 0) { fetchUsers(); } else { console.log("Brak ID do pobrania."); }
           '
-
       - name: Commit and Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Zmiana ścieżki dla git add
           git add subpages/BoostersPage/resolved-users.json
           git diff-index --quiet HEAD || git commit -m "Chore: Auto-update Discord usernames [skip ci]"
           git push
