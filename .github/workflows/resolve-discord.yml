@@ -22,63 +22,56 @@ jobs:
         run: |
           node --input-type=module -e '
           import fs from "fs";
-          import vm from "vm";
 
           const ids = new Set();
 
-          function extractIdsFromJs(filePath, variableName) {
-            console.log(`[DEBUG] Sprawdzam plik: ${filePath}`);
+          // Funkcja wyciągająca ze struktury tekstu dowolne ciągi 17-19 cyfr (standard ID Discorda)
+          function extractIdsFromFile(filePath) {
+            console.log(`[DEBUG] Przeszukuję plik tekstowo: ${filePath}`);
             if (!fs.existsSync(filePath)) {
               console.log(`[DEBUG] Plik nie istnieje: ${filePath}`);
               return;
             }
             try {
-              const code = fs.readFileSync(filePath, "utf8");
-              const context = {};
-              vm.createContext(context);
-              vm.runInContext(code, context);
+              const content = fs.readFileSync(filePath, "utf8");
+              // Regex szuka ciągów cyfr ujętych w cudzysłowy (np. "448894048586170369")
+              const matches = content.match(/"\d{17,19}"|'\d{17,19}'/g);
               
-              const data = context[variableName];
-              if (Array.isArray(data)) {
-                console.log(`[DEBUG] Sukces: Znaleziono ${variableName} (${data.length} pozycji)`);
-                data.forEach(item => { 
-                  if(item.id && item.id !== "0") ids.add(item.id); 
+              if (matches) {
+                matches.forEach(match => {
+                  const id = match.replace(/["\']/g, ""); // usuwamy cudzysłowy
+                  if (id !== "0") {
+                    ids.add(id);
+                  }
                 });
-              } else {
-                console.log(`[DEBUG] Zmienna ${variableName} nie jest tablicą.`);
               }
             } catch (e) {
-              console.error(`[DEBUG] Błąd parsowania pliku ${filePath}:`, e.message);
+              console.error(`[DEBUG] Błąd odczytu pliku ${filePath}:`, e.message);
             }
           }
 
-          extractIdsFromJs("subpages/BoostersPage/boosters-data.js", "boosters_data");
-          extractIdsFromJs("subpages/BugHuntersPage/bughunters-data.js", "bghunters_data");
+          // Szukamy ID w plikach
+          extractIdsFromFile("subpages/BoostersPage/boosters-data.js");
+          extractIdsFromFile("subpages/BugHuntersPage/bughunters-data.js");
 
-          console.log(`[DEBUG] Liczba unikalnych ID do pobrania z Discorda: ${ids.size}`);
+          console.log(`[DEBUG] Wykryte unikalne ID użytkowników: ${ids.size}`);
 
-          if (ids.size === 0) {
-            console.log("[DEBUG] Brak ID. Tworzę pusty plik słownika.");
-            const dir = "subpages/BoostersPage";
-            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-            fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify({}, null, 2));
-          } else {
-            const resolved = {};
-            
-            // Główna pętla wykonuje się synchronicznie dla Basha dzięki top-level await
+          const resolved = {};
+          
+          if (ids.size > 0) {
             for (const id of ids) {
-              console.log(`[API] Pobieram ID: ${id}`);
+              console.log(`[API] Pobieram nazwę dla ID: ${id}`);
               try {
                 const res = await fetch(`https://discord.com/api/v10/users/${id}`, {
                   headers: { "Authorization": `Bot ${process.env.DISCORD_TOKEN}` }
                 });
-                console.log(`[API] Status dla ${id}: ${res.status}`);
                 if (res.ok) {
                   const data = await res.json();
                   resolved[id] = data.global_name || data.username;
-                  console.log(`[DEBUG] Pobrano: ${resolved[id]}`);
+                  console.log(`[DEBUG] Sukces: ${id} -> ${resolved[id]}`);
                 } else {
                   resolved[id] = `ID: ${id}`;
+                  console.log(`[API] Discord zwrócił status ${res.status} dla ${id}`);
                 }
               } catch (err) {
                 resolved[id] = `ID: ${id}`;
@@ -86,12 +79,12 @@ jobs:
               }
               await new Promise(r => setTimeout(r, 500));
             }
-
-            const dir = "subpages/BoostersPage";
-            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-            fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify(resolved, null, 2));
-            console.log("[DEBUG] Plik resolved-users.json został zapisany!");
           }
+
+          const dir = "subpages/BoostersPage";
+          if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+          fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify(resolved, null, 2));
+          console.log("[DEBUG] Słownik nazw został pomyślnie zapisany.");
           '
 
       - name: Commit and Push changes
