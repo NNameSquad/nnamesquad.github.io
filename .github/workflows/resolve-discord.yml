@@ -20,7 +20,8 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
         run: |
-          node --input-type=module -e '
+          # 1. Zapisujemy czysty kod JavaScript do tymczasowego pliku bez ingerencji Basha
+          cat << 'EOF' > resolver.js
           import fs from "fs";
 
           const ids = new Set();
@@ -75,7 +76,6 @@ jobs:
                 console.error("[DEBUG] Błąd sieci dla " + id + ":", err.message);
               }
               
-              // Klasyczny setTimeout opakowany w Promise bez funkcji strzałkowej
               await new Promise(function(resolve) {
                 setTimeout(resolve, 500);
               });
@@ -88,7 +88,10 @@ jobs:
           }
           fs.writeFileSync(dir + "/resolved-users.json", JSON.stringify(resolved, null, 2));
           console.log("[DEBUG] Słownik nazw został pomyślnie zapisany.");
-          '
+          EOF
+
+          # 2. Bezpiecznie uruchamiamy plik jako moduł
+          node resolver.js
 
       - name: Commit and Push changes
         run: |
