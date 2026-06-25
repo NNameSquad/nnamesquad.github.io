@@ -1,7 +1,7 @@
 name: Resolve Discord Usernames
 on:
   schedule:
-    - cron: '0 0 * * *' # Raz na dobę o północy
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,13 +20,14 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
         run: |
-          node -e '
-          const fs = require("fs");
-          const vm = require("vm");
+          node --input-type=module -e '
+          import fs from "fs";
+          import vm from "vm";
+
           const ids = new Set();
 
           function extractIdsFromJs(filePath, variableName) {
-            console.log(`[DEBUG] Próba odczytu pliku: ${filePath}`);
+            console.log(`[DEBUG] Sprawdzam plik: ${filePath}`);
             if (!fs.existsSync(filePath)) {
               console.log(`[DEBUG] Plik nie istnieje: ${filePath}`);
               return;
@@ -39,72 +40,57 @@ jobs:
               
               const data = context[variableName];
               if (Array.isArray(data)) {
-                console.log(`[DEBUG] Znaleziono tablicę ${variableName}. Liczba elementów: ${data.length}`);
+                console.log(`[DEBUG] Sukces: Znaleziono ${variableName} (${data.length} pozycji)`);
                 data.forEach(item => { 
-                  if(item.id && item.id !== "0") {
-                    ids.add(item.id); 
-                  }
+                  if(item.id && item.id !== "0") ids.add(item.id); 
                 });
               } else {
-                console.log(`[DEBUG] Zmienna ${variableName} nie jest tablicą lub nie istnieje w pliku.`);
+                console.log(`[DEBUG] Zmienna ${variableName} nie jest tablicą.`);
               }
             } catch (e) {
-              console.error(`[DEBUG] Błąd krytyczny podczas przetwarzania ${filePath}:`, e);
+              console.error(`[DEBUG] Błąd parsowania pliku ${filePath}:`, e.message);
             }
           }
 
           extractIdsFromJs("subpages/BoostersPage/boosters-data.js", "boosters_data");
           extractIdsFromJs("subpages/BugHuntersPage/bughunters-data.js", "bghunters_data");
 
-          console.log(`[DEBUG] Łącznie unikalnych ID do pobrania: ${ids.size}`);
+          console.log(`[DEBUG] Liczba unikalnych ID do pobrania z Discorda: ${ids.size}`);
 
-          const resolved = {};
-
-          async function fetchUsers() {
+          if (ids.size === 0) {
+            console.log("[DEBUG] Brak ID. Tworzę pusty plik słownika.");
+            const dir = "subpages/BoostersPage";
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+            fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify({}, null, 2));
+          } else {
+            const resolved = {};
+            
+            // Główna pętla wykonuje się synchronicznie dla Basha dzięki top-level await
             for (const id of ids) {
-              console.log(`Pobieranie użytkownika z Discord API: ${id}`);
+              console.log(`[API] Pobieram ID: ${id}`);
               try {
                 const res = await fetch(`https://discord.com/api/v10/users/${id}`, {
                   headers: { "Authorization": `Bot ${process.env.DISCORD_TOKEN}` }
                 });
-                
-                console.log(`[DEBUG] Status odpowiedzi Discord dla ${id}: ${res.status}`);
-                
+                console.log(`[API] Status dla ${id}: ${res.status}`);
                 if (res.ok) {
                   const data = await res.json();
                   resolved[id] = data.global_name || data.username;
-                  console.log(`[DEBUG] Sukces! Pobrano: ${resolved[id]}`);
+                  console.log(`[DEBUG] Pobrano: ${resolved[id]}`);
                 } else {
                   resolved[id] = `ID: ${id}`;
-                  const errText = await res.text();
-                  console.log(`[DEBUG] Discord zwrócił błąd dla ${id}: ${errText}`);
                 }
               } catch (err) {
                 resolved[id] = `ID: ${id}`;
-                console.error(`[DEBUG] Błąd sieciowy dla ${id}:`, err);
+                console.error(`[DEBUG] Błąd sieci dla ${id}:`, err.message);
               }
               await new Promise(r => setTimeout(r, 500));
             }
-            
-            const dir = "subpages/BoostersPage";
-            if (!fs.existsSync(dir)){
-                fs.mkdirSync(dir, { recursive: true });
-            }
-            
-            fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify(resolved, null, 2));
-            console.log("[DEBUG] Plik resolved-users.json został pomyślnie zapisany na dysku.");
-          }
 
-          if(ids.size > 0) { 
-            fetchUsers().then(() => {
-              process.exit(0);
-            }).catch((err) => {
-              console.error("Błąd wewnątrz fetchUsers:", err);
-              process.exit(1);
-            });
-          } else { 
-            console.log("[DEBUG] Brak ID do pobrania. Przerywam tworzenie pliku."); 
-            process.exit(0);
+            const dir = "subpages/BoostersPage";
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+            fs.writeFileSync(`${dir}/resolved-users.json`, JSON.stringify(resolved, null, 2));
+            console.log("[DEBUG] Plik resolved-users.json został zapisany!");
           }
           '
 
