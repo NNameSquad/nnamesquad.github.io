@@ -65,7 +65,7 @@ jobs:
                 });
                 if (res.ok) {
                   const data = await res.json();
-                  resolved[id] = data.global_name || data.username;
+                  resolved[id] = data.username;
                   console.log("[DEBUG] Sukces: " + id + " -> " + resolved[id]);
                 } else {
                   resolved[id] = "ID: " + id;
