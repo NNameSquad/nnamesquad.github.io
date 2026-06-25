@@ -49,7 +49,7 @@ async function renderBoosters() {
   }
 
   // Funkcja pomocnicza zwracająca nazwę lub @ID jeśli nie ma w mapie
-  const getUserDisplayName = (id) => namesMapping[id] ? namesMapping[id] : `@${id}`;
+  const getUserDisplayName = (id) => namesMapping[id] ? `@${namesMapping[id]}` : `@${id}`;
 
   container.innerHTML = `
     <h1 style="font-weight: 300; font-size: 28px;">🔮 History of boosters 🔮</h1>

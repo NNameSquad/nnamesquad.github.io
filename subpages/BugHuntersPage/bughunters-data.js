@@ -1,6 +1,6 @@
 const bghunters_data = [
   { id: "448894048586170369", bugs: 100 }, { id: "756482164262043720", bugs: 105 }, // App Testers
-  { id: "692026308049240074", bugs: 5 },
+  { id: "692026308049240074", bugs: 6 },
   { id: "817810005255258142", bugs: 3 },
   { id: "636210705632067586", bugs: 2 },
   { id: "563684700376399872", bugs: 1 },
@@ -10,4 +10,4 @@ const bghunters_data = [
   { id: "0", bugs: 0 }, // Users waho deleted their account or asked to remove their stats
 ];
 
-const bughunters_updatetime = "2025-06-03T14:12:00+02:00"; // leave +02:00 for Warsaw timezone
+const bughunters_updatetime = "2026-06-25T12:54:00+02:00"; // leave +02:00 for Warsaw timezone

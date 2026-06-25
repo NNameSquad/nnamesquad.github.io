@@ -1,4 +1,5 @@
-function renderBugHunters() {
+// GŁÓWNA FUNKCJA RENDERUJĄCA Z OBSŁUGĄ RESOLVED-USERS.JSON
+async function renderBugHunters() {
     const container2 = document.getElementById("bh-embed");
 
     // Defensive: ensure container exists
@@ -6,6 +7,21 @@ function renderBugHunters() {
         console.error("bughunters.js: target element #bh-embed not found in DOM.");
         return;
     }
+
+    let namesMapping = {};
+    
+    // Próbujemy pobrać wygenerowane przez GitHub Actions nazwy użytkowników z folderu BoostersPage
+    try {
+        const response = await fetch("subpages/BoostersPage/resolved-users.json");
+        if (response.ok) {
+            namesMapping = await response.json();
+        }
+    } catch (e) {
+        console.log("Nie udało się pobrać nazw dla BugHunters, wyświetlam same ID.", e);
+    }
+
+    // Funkcja pomocnicza zwracająca nazwę użytkownika (zawsze z @) lub @ID, jeśli nie ma w mapie
+    const getUserDisplayName = (id) => namesMapping[id] ? `@${namesMapping[id]}` : `@${id}`;
 
     // Use namespaced variables from bughunters-data.js
     const _bghunters = typeof bghunters_data !== 'undefined' ? bghunters_data : (typeof bghunters !== 'undefined' ? bghunters : []);
@@ -65,11 +81,12 @@ function renderBugHunters() {
         for (const id of fixedOrder) {
             const hunter = specialHunters.find(h => h.id === id);
             if (!hunter) continue;
-            html += `@${hunter.id}<br>`;
+            // POPRAWKA: Usunięto sztywne "@" sprzed funkcji
+            html += `${getUserDisplayName(hunter.id)}<br>`;
         }
         container2.innerHTML += `
       <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">
-      <img src="https://sayouri.dev/nns/BugHuntersPage/media/AppTesterIcon.png" width="28px" height="28px" alt="[Icon: App Tester Badge]"> App Tester</h1>
+      <img src="https://nnamesquad.top/subpages/BugHuntersPage/media/bh/AppTesterIcon.png" width="28px" height="28px" alt="[Icon: App Tester Badge]"> App Tester</h1>
       <p>${html}</p>
   `;
     }
@@ -80,7 +97,8 @@ function renderBugHunters() {
         if (group.length === 0) return;
         let html = "";
         for (const h of group) {
-            html += `@${h.id} - <strong>${h.bugs}</strong> 👾<br>`;
+            // POPRAWKA: Usunięto sztywne "@" sprzed funkcji
+            html += `${getUserDisplayName(h.id)} - <strong>${h.bugs}</strong> 👾<br>`;
         }
         container2.innerHTML += `
       <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;"><img src="${icon}" width="${width}" height="${height}" alt="${alt}"> ${label}</h1>
@@ -93,7 +111,7 @@ function renderBugHunters() {
         visibleHunters,
         20,
         Infinity,
-        "https://sayouri.dev/nns/BugHuntersPage/media/BugHunterL3.png",
+        "https://nnamesquad.top/subpages/BugHuntersPage/media/bh/BugHunterL3.png",
         "[Icon: BugHunter Level 3 Badge]",
         "BugHunter Level 3",
     );
@@ -101,7 +119,7 @@ function renderBugHunters() {
         visibleHunters,
         5,
         20,
-        "https://sayouri.dev/nns/BugHuntersPage/media/BugHunterL2.png",
+        "https://nnamesquad.top/subpages/BugHuntersPage/media/bh/BugHunterL2.png",
         "[Icon: BugHunter Level 2 Badge]",
         "BugHunter Level 2",
     );
@@ -109,7 +127,7 @@ function renderBugHunters() {
         visibleHunters,
         1,
         5,
-        "https://sayouri.dev/nns/BugHuntersPage/media/BugHunterL1.png",
+        "https://nnamesquad.top/subpages/BugHuntersPage/media/bh/BugHunterL1.png",
         "[Icon: BugHunter Level 1 Badge]",
         "BugHunter Level 1",
     );
@@ -134,12 +152,12 @@ function renderBugHunters() {
 `;
 }
 
-// If the container exists now, render immediately. Otherwise poll briefly until it appears.
+// Sprawdzanie obecności kontenera w DOM i inicjalizacja asynchroniczna
 if (document.getElementById('bh-embed')) {
     renderBugHunters();
 } else {
     let attempts = 0;
-    const maxAttempts = 50; // ~10 seconds at 200ms
+    const maxAttempts = 50; 
     const iv = setInterval(() => {
         attempts += 1;
         if (document.getElementById('bh-embed')) {
