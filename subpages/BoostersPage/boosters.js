@@ -82,7 +82,7 @@ async function renderBoosters() {
       <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">🚀 Leaderboard</h1>
       <p>${rest}</p>
     <div class="boosters-footer-info">
-    ⚠ Statistics are tracked manually and may differ from Discord’s official boost counts. Boosts are counted by transfers, and since 2025 also by duration. If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count. Personal statistics can be permanently deleted on request.
+    ⚠ INFO ⚠</br>Statistics are tracked manually and may differ from Discord’s official boost counts.</br>Username changes are tracked automatically and updates once per day.</br>Every 🚀 mean "one" boost that lasted at least 1 month.</br>If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count.</br>Personal statistics can be permanently deleted on request.
     </div>
   `;
 }
