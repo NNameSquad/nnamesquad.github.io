@@ -1,13 +1,13 @@
 const boosters_data = [
-  { id: "448894048586170369", boosts: 56 },
-  { id: "756482164262043720", boosts: 49 },
+  { id: "448894048586170369", boosts: 58 }, //SAYO
+  { id: "756482164262043720", boosts: 51 }, //KIRKA
   { id: "692026308049240074", boosts: 12 },
   { id: "239932087925342209", boosts: 10 },
   { id: "531129228532645888", boosts: 6 },
   { id: "429661571019571200", boosts: 6 },
+  { id: "925174809682387024", boosts: 6 }, //RADEK
   { id: "439828776659058688", boosts: 4 },
   { id: "637972039332003841", boosts: 4 },
-  { id: "925174809682387024", boosts: 4 },
   { id: "817810005255258142", boosts: 3 },
   { id: "762262927477964800", boosts: 2 },
   { id: "376320713101148163", boosts: 2 },
@@ -21,5 +21,5 @@ const boosters_data = [
 // Last deleted:
 // 1142127344862122125 - 2
 
-const boosters_updatetime = "2026-07-24T22:30:00+02:00"; // leave +02:00 for Warsaw timezone
+const boosters_updatetime = "2026-08-24T19:35:00+02:00"; // leave +02:00 for Warsaw timezone
 // ID 0 means Users who deleted their account or asked to remove their stats
