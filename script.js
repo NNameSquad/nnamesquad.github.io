@@ -1,3 +1,18 @@
+// Toggle the collapsible "Past Winners" section on the Hall of Fame page
+function toggleHofHistory(btn) {
+  const history = document.getElementById("hof-history");
+  if (!history) return;
+  const isExpanded = history.classList.toggle("expanded");
+  btn.classList.toggle("active", isExpanded);
+  btn.setAttribute("aria-expanded", String(isExpanded));
+  const label = btn.querySelector(".hof-toggle-label");
+  if (label) {
+    label.textContent = isExpanded
+      ? "Hide"
+      : "Past Winners";
+  }
+}
+
 function setSectionParam(action) {
   try {
     const url = new URL(window.location.href);

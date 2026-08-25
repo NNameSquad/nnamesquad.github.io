@@ -143,6 +143,123 @@
   margin: 0;
 }
 
+/* Hall of Fame - past winners toggle & badges */
+.hof-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1.8em 0 0.5em;
+}
+
+.hof-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  background: var(--card-bg);
+  border: 1px solid rgba(221, 54, 113, 0.35);
+  color: var(--primary-text);
+  padding: 0.7em 1.6em;
+  border-radius: 999px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease;
+  box-shadow: 0 4px 18px rgba(221, 54, 113, 0.15);
+}
+
+.hof-toggle-btn:hover {
+  background: var(--accent-bg);
+  box-shadow: 0 6px 22px rgba(221, 54, 113, 0.3);
+  transform: translateY(-1px);
+}
+
+.hamburger-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 20px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--accent-light);
+  border-radius: 2px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.hof-toggle-btn.active .hamburger-icon span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hof-toggle-btn.active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.hof-toggle-btn.active .hamburger-icon span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.hof-history {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease;
+}
+
+.hof-history.expanded {
+  max-height: 3000px;
+  opacity: 1;
+}
+
+.hof-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3em;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.hof-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2em;
+  flex: 1 1 380px;
+  max-width: 440px;
+}
+
+.hof-column-title {
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--tos-h1-discord);
+  margin-bottom: 0.3em;
+}
+
+.hof-badge-card {
+  width: 100%;
+  height: auto;
+  min-height: 160px;
+}
+
+.hof-badge-card .profile-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
 /* Discord Link Button Styling */
 .discord-link-button {
   display: inline-block;
