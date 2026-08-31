@@ -4,7 +4,8 @@ const boosters_data = [
   { id: "756482164262043720", boosts: 51 }, //KIRKA
   // Boosting since 16.11.2024 | +2 on the 15th of every month | 
   // Data for Sayo and Kirka showing boosts as of 04.09.2026(sayo) and 15.09.2025(kirka), due to counting their boosts in one-month forward manner. Trusting they wont unboost before the next boost accumulation date.
-  { id: "692026308049240074", boosts: 12 },
+  { id: "692026308049240074", boosts: 14 },
+  // Boosting since 27.08.2026 | +2 on the 26th of every month | 
   { id: "239932087925342209", boosts: 10 },
   { id: "531129228532645888", boosts: 6 },
   { id: "429661571019571200", boosts: 6 },
@@ -25,5 +26,5 @@ const boosters_data = [
 // Last deleted:
 // 1142127344862122125 - 2
 
-// Last update: ID:925174809682387024 Action: Removed 2 boosts due to unboosting server before boost accumulation. + comments
-const boosters_updatetime = "2026-08-25T21:30:00+02:00"; // leave +02:00 for Warsaw timezone
+// Last update: ID:692026308049240074 Action: Added 2 boosts.
+const boosters_updatetime = "2026-08-31T21:26:00+02:00"; // leave +02:00 for Warsaw timezone
