@@ -313,7 +313,24 @@ function fillStaffProfiles() {
     autoGenContainer &&
     !autoGenContainer.querySelector(".user-profiles-row")
   ) {
-    window.staffData.forEach(() => {
+    let retiredHeaderAdded = false;
+    window.staffData.forEach((staff) => {
+      // Insert a section header before the first retired staff card
+      if (staff.role === "Retired Staff" && !retiredHeaderAdded) {
+        retiredHeaderAdded = true;
+        const retiredTitle = document.createElement("h1");
+        retiredTitle.style.cssText =
+          "font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 1.5em;";
+        retiredTitle.textContent = "Retired Staff:";
+        autoGenContainer.appendChild(retiredTitle);
+
+        const retiredInfo = document.createElement("p");
+        retiredInfo.className = "retired-staff-info";
+        retiredInfo.textContent =
+          "Please note @Retired Staff members are not staff members and cannot take any steps to assist you.";
+        autoGenContainer.appendChild(retiredInfo);
+      }
+
       const row = document.createElement("div");
       row.className = "user-profiles-row";
       const placeholder = document.createElement("div");
@@ -339,23 +356,29 @@ function fillStaffProfiles() {
 
   // small helper that builds the repeated card HTML
   function buildCardHtml(staff) {
+    const isRetired = staff.role === "Retired Staff";
     const { short, age } = fmtBirthday(staff.birthday);
     const contactsHtml = renderContactsHtml(staff.contacts || []);
-    return `
-                <div class="profile-avatar">
-                    <img src="media/users-logo/${staff.id}-staff.png" alt="User avatar" onerror="this.onerror=null;this.src='media/ discord.ico'" />
-                </div>
-                <div class="profile-info">
-                    <h3 class="profile-username">${escapeHtml(staff.username || staff.name || "")}</h3>
-                    <div class="profile-roles"><span class="role">${escapeHtml(staff.role || "")}</span></div>
-                    <p class="profile-desc">${escapeHtml(staff.from || "")}</p>
+    const detailsHtml = isRetired
+      ? ""
+      : `
                     <p class="profile-desc">
                         <strong>Name:</strong> <span id="profile-name">${escapeHtml(staff.name || "")}</span><br />
                         <strong>Age:</strong> <span id="profile-age">${escapeHtml(age)}</span><br />
                         <strong>Birthday:</strong> <span id="profile-birthday">${escapeHtml(short)}</span><br />
                         <strong>Languages:</strong> <span id="profile-languages">${escapeHtml((staff.languages || []).join(", "))}</span><br />
                         <strong>About me:</strong> <span id="profile-about">${escapeHtml(staff.about || "")}</span><br />
-                    </p>
+                    </p>`;
+    return `
+                <div class="profile-avatar">
+                    <img src="media/users-logo/${staff.id}-staff.png" alt="User avatar" onerror="this.onerror=null;this.src='media/ discord.ico'" />
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-username" id="${escapeHtml(staff.id)}">${escapeHtml(staff.username || staff.name || "")}</h3>
+                    <div class="profile-roles"><span class="role">${escapeHtml(staff.role || "")}</span></div>
+                    ${staff.from ? `<p class="profile-desc profile-desc-tight">${escapeHtml(staff.from)}</p>` : ""}
+                    ${staff.to ? `<p class="profile-desc profile-desc-tight">${escapeHtml(staff.to)}</p>` : ""}
+                    ${detailsHtml}
                     ${contactsHtml}
                     <p class="profile-desc-id">${escapeHtml(staff.id)}</p>
                 </div>
@@ -371,7 +394,6 @@ function fillStaffProfiles() {
           : null;
       if (!staff) staff = window.staffData[idx] || null;
       if (!staff) return;
-      card.id = staff.id;
       card.innerHTML = buildCardHtml(staff);
     });
     return;
@@ -384,7 +406,6 @@ function fillStaffProfiles() {
   window.staffData.forEach((staff) => {
     const wrapper = document.createElement("div");
     wrapper.className = "staff-profile-card";
-    wrapper.id = staff.id;
     wrapper.innerHTML = buildCardHtml(staff).replace(
       new RegExp(`media/${staff.id}-staff.png`, "g"),
       `media/${staff.id}-staff.png`,

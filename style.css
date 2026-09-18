@@ -596,6 +596,13 @@ li::before {
   margin: 0;
 }
 
+.retired-staff-info {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  text-align: center !important;
+}
+
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -983,6 +990,10 @@ li::before {
 .profile-content p {
   margin: 0.5rem;
   text-align: justify;
+}
+
+.profile-content p.profile-desc-tight {
+  margin: 0;
 }
 
 .profile-avatar {

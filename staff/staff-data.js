@@ -54,6 +54,20 @@ const staffData = [
       { type: "tiktok", value: "https://www.tiktok.com/@verciq" },
     ],
   },
+  {
+    id: "543518302593482752",
+    username: "Akiś",
+    role: "Retired Staff",
+    from: "From: 26.12.2019",
+    to: "To: 18.08.2021",
+  },
+  {
+    id: "376320713101148163",
+    username: "Budyniowa",
+    role: "Retired Staff",
+    from: "From: 22.11.2020",
+    to: "To: 29.10.2022",
+  },
 ];
 
 window.staffData = staffData;
