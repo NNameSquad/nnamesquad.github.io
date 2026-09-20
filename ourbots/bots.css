@@ -1,0 +1,125 @@
+:root {
+    --kondziocolor: #dd3671;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --link-color: #fcfc2b;
+    --link-hover-color: #ed994f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.terms-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.terms-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.terms-header h1 {
+    color: var(--kondziocolor);
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.terms-header p {
+    font-size: 18px;
+    color: #aaa;
+    margin: 0;
+}
+
+.terms-notice {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    padding: 20px;
+    border-left: 4px solid var(--kondziocolor);
+    background-color: #1a1a1a;
+}
+
+.terms-section {
+    margin-bottom: 35px;
+}
+
+.terms-section h2 {
+    color: var(--kondziocolor);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.terms-section p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.terms-section ul {
+    margin: 10px 0 20px 25px;
+    padding-left: 20px;
+}
+
+.terms-section li {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 5px;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+.terms-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #333;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    .terms-container {
+        width: 100%;
+    }
+
+    .terms-header h1 {
+        font-size: 36px;
+    }
+
+    .terms-section h2 {
+        font-size: 23px;
+    }
+
+    .terms-section p,
+    .terms-section li,
+    .terms-notice {
+        font-size: 16px;
+    }
+}
