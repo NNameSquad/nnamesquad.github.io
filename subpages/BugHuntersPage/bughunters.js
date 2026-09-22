@@ -9,7 +9,7 @@ async function renderBugHunters() {
     }
 
     let namesMapping = {};
-    
+
     // Próbujemy pobrać wygenerowane przez GitHub Actions nazwy użytkowników z folderu BoostersPage
     try {
         const response = await fetch("subpages/BoostersPage/resolved-users.json");
@@ -157,7 +157,7 @@ if (document.getElementById('bh-embed')) {
     renderBugHunters();
 } else {
     let attempts = 0;
-    const maxAttempts = 50; 
+    const maxAttempts = 50;
     const iv = setInterval(() => {
         attempts += 1;
         if (document.getElementById('bh-embed')) {
