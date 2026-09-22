@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.particlesJS.load(
         "particles-canvas",
         "particles.json",
-        function () {},
+        function () { },
       );
     }
   } catch (e) {
