@@ -577,10 +577,6 @@ li::before {
   background: #fff;
 }
 
-.profile-info {
-  margin-left: 2em;
-}
-
 .profile-username {
   font-size: 1.6em;
   font-weight: 600;
