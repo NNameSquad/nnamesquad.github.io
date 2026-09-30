@@ -82,7 +82,10 @@ async function renderBoosters() {
       <h1 style="font-weight: 300; font-size: 28px; color: var(--tos-h1-discord); padding-top: 0.5em;">🚀 Leaderboard</h1>
       <p>${rest}</p>
     <div class="boosters-footer-info">
-    ⚠ INFO ⚠</br>Statistics are tracked manually and may differ from Discord’s official boost counts.</br>Username changes are tracked automatically and updates once per day.</br>Every 🚀 mean "one" boost that lasted at least 1 month.</br>If a user deletes or deactivates their account, their stats are removed, but their contributions remain in the total boost count.</br>Personal statistics can be permanently deleted on request.
+    Boost points are credited upfront (and will revert if cancelled before completing the monthly milestone).<br/>
+    1 boost active for 1 month = +1🚀<br/>
+    2 boosts active for 1 month = +2🚀 etc<br/>
+    Account deletion removes individual stats while preserving total counts, usernames auto-update weekly, and personal data can be permanently deleted upon request.
     </div>
   `;
 }
