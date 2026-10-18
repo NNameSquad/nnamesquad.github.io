@@ -866,8 +866,7 @@
               text-align: center;
               color: var(--tos-h1-discord);
             ">
-                    Please read the note "Payment & Policy Information" before you make
-                    purchases.<br />
+                    Secure online payments are powered by Stripe.<br />
                 </p>
                 <h2 style="
               font-weight: 300;
@@ -887,30 +886,16 @@
                     for a period of 100 days.
                 </p>
                 <div class="shop-buttons">
-                    <button onclick="
-                window.open(
-                  'https://donate.stripe.com/fZe4ic7Om1kp1HO6oE',
-                  '_blank',
-                )
-              ">
-                        DONATE (PLN)
-                    </button>
-                    <button onclick="
-                window.open(
-                  'https://donate.stripe.com/aEUdSM0lUbZ31HOfZf',
-                  '_blank',
-                )
-              ">
-                        DONATE (CZK)
-                    </button>
-                    <button onclick="
-                window.open(
-                  'https://donate.stripe.com/28obKEfgO0glaek9AS',
-                  '_blank',
-                )
-              ">
-                        DONATE (EUR)
-                    </button>
+                    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                    <stripe-buy-button buy-button-id="buy_btn_1URt3IJgbKZPrVXPM2zNCebF"
+                        publishable-key="pk_live_51QbR5EJgbKZPrVXPMV2lkRAUJA9bO53L7V9gyYZPcZaVBZGXp0qHjNaHuGLF4UobFa3Ef04mrieaXSHsdAmMsLIE003JN3duUl">
+                    </stripe-buy-button>
+                                        <stripe-buy-button buy-button-id="buy_btn_1URt9IJgbKZPrVXPj1tawL42"
+                        publishable-key="pk_live_51QbR5EJgbKZPrVXPMV2lkRAUJA9bO53L7V9gyYZPcZaVBZGXp0qHjNaHuGLF4UobFa3Ef04mrieaXSHsdAmMsLIE003JN3duUl">
+                    </stripe-buy-button>
+                                        <stripe-buy-button buy-button-id="buy_btn_1URtANJgbKZPrVXPU6a1pfqp"
+                        publishable-key="pk_live_51QbR5EJgbKZPrVXPMV2lkRAUJA9bO53L7V9gyYZPcZaVBZGXp0qHjNaHuGLF4UobFa3Ef04mrieaXSHsdAmMsLIE003JN3duUl">
+                    </stripe-buy-button>
                 </div>
                 <h2 style="
               font-weight: 300;
