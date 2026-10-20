@@ -221,67 +221,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const sectionTitles = {
-  section1: "Postanowienia ogólne",
-  section2: "Zasady zachowania",
-  section3: "Kanały głosowe",
-}; // RULES
-const rules = {
-  section1: [
-    "Nieprzestrzeganie regulaminu wiąże się z otrzymaniem kary.",
-    "Nieznajomość regulaminu oraz innych zasad obowiązujących na serwerze nie zwalniają cię z obowiązku ich przestrzegania.",
-    `Twoim obowiązkiem jest przestrzeganie Wytycznych dla społeczności discord (<a href="https://discord.com/guidelines">https://discord.com/guidelines</a>) oraz Warunków świadczenia usługi discord (<a href="https://discord.com/terms">https://discord.com/terms</a>) ponieważ są one częścią regulaminu.`,
-    "Administracja ma prawo do aktualizacji regulaminu.",
-    "Administracja może ukarać za rzeczy niezawarte w regulaminie jeżeli uzna, że działa to na szkodę serwera.",
-    "Rejoin'y będą skutkować banem.",
-    "Konta istniejące mniej niż 24 godziny będą banowane przy próbie dołączenia na serwer.",
-    "Aby przebywać na naszym serwerze musisz mieć ukończony 13 rok życia.",
-    "Zakazane jest podszywanie się pod użytkowników serwera, osoby publiczne jak i boty.",
-    "Zakazane jest posiadanie niewidzialnych/nieoznaczalnych/wulgarnych/nsfw/hoisting awatarów, nicków, statusów sekcji 'O mnie' czy innych części profilu użytkownika.",
-    `Zakazana jest kradzież, przywłaszczenie, kopiowanie czy wykorzystywanie jakiegokolwiek rodzaju treści zamieszczonych na naszym serwerze, serwisie/aplikacji, stronie internetowej czy z innych zarządzanymi przez nas miejscach. Wszelkie naruszenia tego typu będą rozpatrywane drogą prawną m.in. na podstawie Art. 115. - 'Naruszenie cudzych praw autorskich'.<br><i style="color: grey; font-size: smaller;">(Dz.U.2022.0.2509 t.j. - Ustawa z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych, Polska).</i>`,
-    "Wykorzystywanie multikont w celu zyskania jakichkolwiek korzyści bądź omijania kar jest surowo zabronione, a każde multikonto powinno zostać zgłoszone do administracji.",
-    "Korzystanie z selfbot'ów jest kategorycznie zabronione, a ich wykrycie będzie skutkowało bezwarunkowym banem.",
-    "Korzystanie z zmodyfikowanego klienta Discord, jego modyfikowanie, bądź posiadanie pluginów wiązać się będzie z bezwarunkowym banem.",
-    `Każdy użytkownik może apelować się od nadanej mu kary. Z wyłączeniem kar automatycznych bądź oznaczonych jako "[BMA]". O możliwość apelacji od mute/ban będziecie informowani przez <a>@Dyno#3861</a> w wiadomości prywatnej, więc upewnijcie się że macie możliwość otrzymywania wiadomości prywatnych od użytkowników z naszego serwera.`,
-    "Każdy użytkownik może rekrutować się na dostępne stanowiska, o ile spełnia on wymagania.",
-    "Każdy użytkownik dołączający na serwer musi dobrać sobie role widoczne w ekranie wprowadzenia. Użytkownicy którzy dołączyli na serwer przed dodaniem ekranu muszą odpalić go za pomocą specjalnego kanału #Kanały i role znajdującego się na samej górze listy kanałów i dobrać sobie role.",
-    "Jesteśmy uprzejmi i tolerancyjni dla siebie nawzajem, każdy zasługuje na szacunek.",
-  ],
-  section2: [
-    "Zakazane jest zaśmiecanie chatu w jakikolwiek sposób. Wliczając w to m.in.: spam, flood, caps, masowe/bezcelowe zdjęcia, gify, reakcje.",
-    "Zakazane jest przeklinanie w nadmiernych ilościach.",
-    "Zakazane jest toksyczne zachowanie (mowa nienawiści, wyzwiska, obrażanie).",
-    "Zakazane jest prowokowanie i zachęcanie do łamania regulaminu w jakikolwiek sposób.",
-    "Zakazane jest oszukiwanie, wykorzystywanie, szantażowanie, ośmieszanie innych użytkowników.",
-    "Zakazane jest NSFW w jakiejkolwiek formie.",
-    "Zakazane jest upowszechnianie cudzych danych osobowych (w tym zdjęć, wieku, imienia i innych danych wrażliwych).",
-    "Zakazuje się wykorzystywanie błędów administracji, serwera, discorda jak i luk w regulaminie. Wszystkie napotkane błędy należy zgłosić na odpowiednim do tego kanale.",
-    "Zakazuje się przeszkadzanie w pracy administracji, a niewykonywanie ich poleceń będzie skutkowało otrzymaniem kary.",
-    "Zakazuje się reklamowania się w jakikolwiek sposób (również w wiadomościach prywatnych, bądź wykorzystując swój profil)",
-    "Wysyłanie jakichkolwiek linków bez odpowiedniego kontekstu jest zabronione i będą one usuwane. Wyjątek stanowią linki przesyłane przez użytkowników, którzy przeszli personalną weryfikację.",
-    `Zakazuje się wysyłania plików bądź poruszania tematów powszechnie uznanych za tematy "tabu" (m.in.: wulgarne, rasistowskie, polityczne, religijne).`,
-    "Zakazuje się pingowania użytkowników/administracji/ról bez potrzeby. Masowe wzmianki również są zakazane.",
-    "Nakazuje się używania kanałów zgodnie z ich przeznaczeniem.",
-    `Nakazuje się używania standardowej czcionki wykorzysującej litery alfabetu łacińskiego. Pisanie w tzw. "custom font" bądź "zalgo" jest zabronione.`,
-    "Wymagane jest używanie dozwolonych języków w kanałach tekstowych i głosowych. Aktualnie dozwolone języki można znaleźć w temacie głównego kanału czatu tekstowego.",
-  ],
-  section3: [
-    "Wszystkie zasady obowiązują również na kanałach głosowych.",
-    "Zakazane jest przeszkadzanie w rozmowach/słuchaniu muzyki na kanałach głosowych. W tym krzyczenie/zagłuszanie innych.",
-    "Zakazane jest puszczanie do mikrofonu muzyki, bądź używanie tzw. bindów.",
-    "Zakazane jest nagrywanie użytkowników na kanałach głosowych bez pisemnej zgody wszystkich nagrywanych użytkowników. Chęć nagrywania należy również uprzednio zgłosić do administracji.",
-    "Łamanie zasad na kanałach głosowych może skutkować karą w postaci zablokowania ci możliwości korzystania z kanałów VC.",
-    "Regulamin obowiązuję również na kanałach prywatnych.",
-    "Jeśli ktoś nie posiada mikrofonu, bądź po prostu w danym momencie chcę odpisywać użytkownikom rozmawiającym na kanale vc, powinien skorzystać z przeznaczonego do tego kanału tekstowego.",
-  ],
-};
-
 function updateRulesContent() {
   const rulesList = document.getElementById("rules-list");
   rulesList.innerHTML = "";
 
   let sectionIndex = 1;
 
+  const { sectionTitles, rules } = window.rulesData;
   for (const section in rules) {
     const sectionElement = document.createElement("ul");
     const sectionTitle = document.createElement("h4");
