@@ -1,6 +1,6 @@
 const boosters_data = [
-  { id: "448894048586170369", boosts: 62 }, //SAYO
-  // Boosting (2) since 5.01.2025 | +2 on the 4th of every month | Remove 2 boosts if boost canceled before 04.11.2026
+  { id: "448894048586170369", boosts: 64 }, //SAYO
+  // Boosting (2) since 5.01.2025 | +2 on the 4th of every month | Remove 2 boosts if boost canceled before 04.12.2026
   { id: "756482164262043720", boosts: 52 }, //KIRKA
   { id: "692026308049240074", boosts: 14 }, //Kotek
   { id: "239932087925342209", boosts: 10 },
@@ -24,5 +24,5 @@ const boosters_data = [
 ];
 
 // Last update:
-// ID:448894048586170369 + 1158020020832579596 - Added 2 boosts each.
-const boosters_updatetime = "2026-10-21T14:30:00+02:00"; // leave +02:00 for Warsaw timezone
+// ID:448894048586170369 - Added 2 boosts
+const boosters_updatetime = "2026-11-09T13:12:00+01:00"; // leave +01:00 for Warsaw timezone
