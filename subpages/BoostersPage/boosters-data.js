@@ -6,11 +6,11 @@ const boosters_data = [
   { id: "239932087925342209", boosts: 10 },
   { id: "531129228532645888", boosts: 6 },
   { id: "429661571019571200", boosts: 6 },
+  { id: "1158020020832579596", boosts: 6 }, //Felix
+  // Boosting (2) since 17.09.2026 | +2 on the 16th of every month | Remove 2 boosts if boost canceled before 16.12.2026
   { id: "439828776659058688", boosts: 4 },
   { id: "637972039332003841", boosts: 4 },
   { id: "925174809682387024", boosts: 4 },
-  { id: "1158020020832579596", boosts: 4 }, //Felix
-  // Boosting (2) since 17.09.2026 | +2 on the 16th of every month | Remove 2 boosts if boost canceled before 16.11.2026
   { id: "817810005255258142", boosts: 3 },
   { id: "762262927477964800", boosts: 2 },
   { id: "376320713101148163", boosts: 2 },
@@ -24,5 +24,5 @@ const boosters_data = [
 ];
 
 // Last update:
-// ID:448894048586170369 - Added 2 boosts
-const boosters_updatetime = "2026-11-09T13:12:00+01:00"; // leave +01:00 for Warsaw timezone
+// ID:1158020020832579596 - Added 2 boosts
+const boosters_updatetime = "2026-11-17T00:37:00+01:00"; // leave +01:00 for Warsaw timezone
