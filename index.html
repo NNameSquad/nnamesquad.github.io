@@ -34,21 +34,25 @@
     <div class="main-content">
         <header class="header">
             <div class="logo">
-                <div class="logo-icon">🙊</div>
+                <div class="logo-icon" aria-hidden="true">
+                    <img src="https://sayouri.dev/media/Nono.jpg" alt="" />
+                </div>
                 <h1>NoName Squad</h1>
                 <h2>Community Hub</h2>
             </div>
         </header>
         <section class="welcome-section">
             <div class="welcome-card">
-                <div class="welcome-icon">👋</div>
+                <div class="welcome-icon" aria-hidden="true">
+                    <img src="https://cdn.discordapp.com/emojis/1109437574814126202.webp" alt="" />
+                </div>
                 <h2>Welcome to our server website</h2>
                 <p>Learn more about our community and features.</p>
             </div>
         </section>
         <section class="menu-grid">
             <div class="menu-card" data-action="homepage">
-                <div class="card-icon">🏠</div>
+                <div class="card-icon"><span aria-hidden="true">01</span></div>
                 <h3>Home Page</h3>
                 <p>
                     View the main information about the server history, features and
@@ -58,7 +62,7 @@
             </div>
 
             <div class="menu-card" data-action="tos">
-                <div class="card-icon">📜</div>
+                <div class="card-icon"><span aria-hidden="true">02</span></div>
                 <h3>Terms & Conditions</h3>
                 <p>
                     Read our Terms & Conditions, Privacy Policy, and Copyright Notice.
@@ -67,28 +71,28 @@
             </div>
 
             <div class="menu-card" data-action="halloffame">
-                <div class="card-icon">🏆</div>
+                <div class="card-icon"><span aria-hidden="true">03</span></div>
                 <h3>Hall of Fame</h3>
                 <p>A special thanks to the honorable members or contributors.</p>
                 <div class="card-glow"></div>
             </div>
 
             <div class="menu-card-soon" data-action="roles">
-                <div class="card-icon">⚙️<strong id="soon">（SOON!）</strong></div>
+                <div class="card-icon"><span aria-hidden="true">04</span><strong id="soon">SOON</strong></div>
                 <h3>Roles benefits</h3>
                 <p>Explore the benefits of different roles within the server.</p>
                 <div class="card-glow"></div>
             </div>
 
             <div class="menu-card" data-action="boosters">
-                <div class="card-icon">🚀</div>
+                <div class="card-icon"><span aria-hidden="true">05</span></div>
                 <h3>Server boosters</h3>
                 <p>Checks server boosters history and stats.</p>
                 <div class="card-glow"></div>
             </div>
 
             <div class="menu-card" data-action="bughunters">
-                <div class="card-icon">👾</div>
+                <div class="card-icon"><span aria-hidden="true">06</span></div>
                 <h3>Bug Hunters</h3>
                 <p>
                     Recognizing our community's bug hunters and their contributions.
@@ -97,21 +101,21 @@
             </div>
 
             <div class="menu-card-soon" data-action="partnerships" hidden>
-                <div class="card-icon">🤝<strong id="soon">（SOON!）</strong></div>
+                <div class="card-icon"><span aria-hidden="true">07</span><strong id="soon">SOON</strong></div>
                 <h3>Partnerships</h3>
                 <p>Our collaborations with other communities and/or projects.</p>
                 <div class="card-glow"></div>
             </div>
 
             <div class="menu-card" data-action="ourbots">
-                <div class="card-icon">🤖</div>
+                <div class="card-icon"><span aria-hidden="true">08</span></div>
                 <h3>Our Bots</h3>
                 <p>Meet the bots that we made for our community.</p>
                 <div class="card-glow"></div>
             </div>
 
             <div class="menu-card" data-action="store">
-                <div class="card-icon">🛒</div>
+                <div class="card-icon"><span aria-hidden="true">09</span></div>
                 <h3>Server Store</h3>
                 <p>
                     Our store offers ways to support the community and explore shopping
@@ -121,7 +125,7 @@
             </div>
 
             <div class="menu-card-soon" data-action="collaborators" hidden>
-                <div class="card-icon">🚧<strong id="soon">（SOON!）</strong></div>
+                <div class="card-icon"><span aria-hidden="true">10</span><strong id="soon">SOON</strong></div>
                 <h3>Collaborators</h3>
                 <p>
                     Meet our collaborators and learn about their contributions to the
@@ -131,7 +135,7 @@
             </div>
 
             <div class="menu-card" data-action="staff">
-                <div class="card-icon">👥</div>
+                <div class="card-icon"><span aria-hidden="true">11</span></div>
                 <h3>Staff Members</h3>
                 <p>
                     Meet our dedicated staff members and their roles in the community.
@@ -140,7 +144,7 @@
             </div>
             <div class="menu-card" style="visibility: hidden;">empty</div>
             <div class="menu-card" data-action="contact">
-                <div class="card-icon">📞</div>
+                <div class="card-icon"><span aria-hidden="true">12</span></div>
                 <h3>Contact</h3>
                 <p>Get in touch with our team for any inquiries or support.</p>
                 <div class="card-glow"></div>
@@ -154,7 +158,7 @@
                     <p>
                         &copy; 2019-<span id="current-year"></span>
                         <a href="https://nnamesquad.top/">NoName Squad</a>. All rights
-                        reserved.
+                        reserved. Created by <a href="https://sayouri.dev/">Sayo</a>.
                     </p>
                 </div>
             </div>
@@ -165,7 +169,7 @@
     <div id="homepage-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🏠 Home Page</h2>
+                <h2>Home Page</h2>
                 <button class="close-btn" onclick="closeModal('homepage-modal')">
                     &times;
                 </button>
@@ -237,7 +241,7 @@
     <div id="tos-modal" class="modal hidden" role="dialog" aria-labelledby="tos-title" aria-modal="true">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>📜 Terms & Conditions</h2>
+                <h2>Terms & Conditions</h2>
                 <button class="close-btn" onclick="closeModal('tos-modal')">
                     &times;
                 </button>
@@ -260,11 +264,16 @@
                         Server Rules</a>, and any violation of Discord's rules will result in a permanent
                     ban!
                 </h2>
+                <div class="rules-translation">
+                    <label for="rules-language">Rules language:</label>
+                    <select id="rules-language" name="rules-language">
+                        <option value="pl">Polski</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
                 <p style="color: var(--accent-light); text-align: center">
-                    The main rules are ONLY in Polish due to their significant nature,
-                    but you can translate the rules yourself. We are not responsible for
-                    translation errors, and the original version of the rules is the
-                    decisive one.
+                    The English translation is provided for convenience. The original
+                    Polish version is authoritative.
                 </p>
                 <section id="rules-list"></section>
                 <!--- RULES --->
@@ -342,11 +351,11 @@
                     photos you provide during verification. Your data is processed
                     solely for the purpose of completing the verification. Once the
                     verification process is finalized, only your
-                    <strong>date of birth</strong> is linked to the Mee6 bot and made
-                    publicly visible to other server members. The Mee6 bot handles data
-                    according to its own privacy policy. You can view Mee6's policy
-                    directly on their website. You can remove your date of birth from
-                    the bot at any time using the appropriate slash command. Please
+                    <strong>date of birth</strong> is linked to our bot and made
+                        publicly visible to other server members. Our bot handles data
+                        according to its own privacy policy. You can view the policy
+                        under "Our bots" tab. You can remove your date of birth from
+                    the bot at any time by contacting us. Please
                     note, doing so will invalidate your verification status. If you have
                     any questions or concerns, please contact us directly. Thank you for
                     your understanding and trust.
@@ -359,7 +368,7 @@
     <div id="halloffame-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🏆 Hall of Fame</h2>
+                <h2>Hall of Fame</h2>
                 <button class="close-btn" onclick="closeModal('halloffame-modal')">
                     &times;
                 </button>
@@ -420,7 +429,7 @@
                 <div id="hof-history" class="hof-history">
                     <div class="hof-columns">
                         <div class="hof-column">
-                            <h2 class="hof-column-title">🏅 User of The Year</h2>
+                            <h2 class="hof-column-title">User of The Year</h2>
                             <div class="profile-card hof-badge-card">
                                 <div class="profile-avatar">
                                     <img src="media/users-logo/543518302593482752-logo.png" alt="User avatar" onerror="
@@ -678,7 +687,7 @@
     <div id="roles-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>⚙️ Roles benefits</h2>
+                <h2>Roles benefits</h2>
                 <button class="close-btn" onclick="closeModal('roles-modal')">
                     &times;
                 </button>
@@ -695,7 +704,7 @@
     <div id="boosters-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🚀 Server Boosters</h2>
+                <h2>Server Boosters</h2>
                 <button class="close-btn" onclick="closeModal('boosters-modal')">
                     &times;
                 </button>
@@ -711,7 +720,7 @@
     <div id="bughunters-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>👾 Bug Hunters</h2>
+                <h2>Bug Hunters</h2>
                 <button class="close-btn" onclick="closeModal('bughunters-modal')">
                     &times;
                 </button>
@@ -727,7 +736,7 @@
     <div id="partnerships-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🤝 Partnerships</h2>
+                <h2>Partnerships</h2>
                 <button class="close-btn" onclick="closeModal('partnerships-modal')">
                     &times;
                 </button>
@@ -744,7 +753,7 @@
     <div id="ourbots-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🤖 Our Bots</h2>
+                <h2>Our Bots</h2>
                 <button class="close-btn" onclick="closeModal('ourbots-modal')">
                     &times;
                 </button>
@@ -818,14 +827,11 @@
                         </div>
                     </div>
                 </div>
-                <div hidden>
-                    <p style="text-align: center;">Click <span class="role"
-                            onclick="window.location.href='https://nnamesquad.top/ourbots/terms'">Terms</span> to view
-                        the Terms Of Service<br />Click <span class="role"
-                            onclick="window.location.href='https://nnamesquad.top/ourbots/privacy'">Privacy</span> to
-                        view the Privacy Policy</p>
-                </div>
                 <p style="text-align: center;">We are working to restore the Terms of Service and Privacy Policy</p>
+                <div class="policy-links" aria-label="Bot policies">
+                    <a class="discord-link-button" href="/ourbots/terms/">Terms of Service</a>
+                    <a class="discord-link-button" href="/ourbots/privacy/">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </div>
@@ -834,7 +840,7 @@
     <div id="store-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🛒 Server Store</h2>
+                <h2>Server Store</h2>
                 <button class="close-btn" onclick="closeModal('store-modal')">
                     &times;
                 </button>
@@ -1102,7 +1108,7 @@
     <div id="collaborators-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🚧 Collaborators</h2>
+                <h2>Collaborators</h2>
                 <button class="close-btn" onclick="closeModal('collaborators-modal')">
                     &times;
                 </button>
@@ -1120,7 +1126,7 @@
     <div id="contact-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>📞 Contact Information</h2>
+                <h2>Contact Information</h2>
                 <button class="close-btn" onclick="closeModal('contact-modal')">
                     &times;
                 </button>
@@ -1175,7 +1181,7 @@
     <div id="staff-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>👥 Staff Members</h2>
+                <h2>Staff Members</h2>
                 <button class="close-btn" onclick="closeModal('staff-modal')">
                     &times;
                 </button>

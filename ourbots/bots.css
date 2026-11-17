@@ -1,9 +1,10 @@
 :root {
-    --kondziocolor: #dd3671;
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --link-color: #fcfc2b;
-    --link-hover-color: #ed994f;
+    color-scheme: dark;
+    --kondziocolor: #f5d547;
+    --background-color: #111216;
+    --text-color: #f3f1e9;
+    --link-color: #f5d547;
+    --link-hover-color: #ffe989;
 }
 
 * {
@@ -13,72 +14,96 @@
 body {
     margin: 0;
     padding: 40px 20px;
-    background-color: var(--background-color);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(245, 213, 71, 0.07), transparent 44%),
+        var(--background-color);
     color: var(--text-color);
-    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
     text-align: left;
 }
 
-.terms-container {
-    width: 90%;
-    max-width: 1300px;
+.terms-header,
+.terms-notice,
+.terms-section,
+.terms-footer,
+.privacy-header,
+.privacy-notice,
+.privacy-section,
+.privacy-footer {
+    width: min(100%, 980px);
     margin: 0 auto;
 }
 
-.terms-header {
+.terms-header,
+.privacy-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 2rem;
 }
 
-.terms-header h1 {
+.terms-header h1,
+.privacy-header h1 {
     color: var(--kondziocolor);
-    font-size: 50px;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.04em;
 }
 
-.terms-header p {
-    font-size: 18px;
+.terms-header p,
+.privacy-header p {
+    font-size: 1rem;
     color: #aaa;
     margin: 0;
 }
 
-.terms-notice {
-    font-size: 18px;
+.terms-notice,
+.privacy-notice {
+    font-size: 1rem;
     line-height: 1.8;
-    margin-bottom: 35px;
-    padding: 20px;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background-color: #191a20;
+    border: 1px solid rgba(245, 213, 71, 0.12);
     border-left: 4px solid var(--kondziocolor);
-    background-color: #1a1a1a;
+    border-radius: 0 12px 12px 0;
 }
 
-.terms-section {
-    margin-bottom: 35px;
+.terms-section,
+.privacy-section {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    background: rgba(25, 26, 32, 0.76);
 }
 
-.terms-section h2 {
+.terms-section h2,
+.privacy-section h2 {
     color: var(--kondziocolor);
-    font-size: 28px;
+    font-size: 1.35rem;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 0.75rem;
 }
 
-.terms-section p {
-    font-size: 18px;
+.terms-section p,
+.privacy-section p {
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.8;
-    margin: 10px 0;
+    margin: 0.65rem 0;
 }
 
-.terms-section ul {
-    margin: 10px 0 20px 25px;
-    padding-left: 20px;
+.terms-section ul,
+.privacy-section ul {
+    margin: 0.65rem 0 1.25rem;
+    padding-left: 1.5rem;
 }
 
-.terms-section li {
-    font-size: 18px;
+.terms-section li,
+.privacy-section li {
+    font-size: 1rem;
     line-height: 1.8;
-    margin-bottom: 5px;
+    margin-bottom: 0.25rem;
 }
 
 a {
@@ -92,34 +117,57 @@ a:hover {
     text-decoration: underline;
 }
 
-.terms-footer {
+li::marker {
+    color: var(--kondziocolor);
+}
+
+.terms-footer,
+.privacy-footer {
     text-align: center;
-    margin-top: 50px;
-    padding-top: 25px;
-    border-top: 1px solid #333;
-    font-size: 18px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(245, 213, 71, 0.16);
+    font-size: 1rem;
+}
+
+.policy-return {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid rgba(245, 213, 71, 0.3);
+    border-radius: 999px;
+    background: #191a20;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.policy-return:hover,
+.policy-return:focus-visible {
+    background: rgba(245, 213, 71, 0.12);
+    color: var(--link-hover-color);
+    text-decoration: none;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
     body {
-        padding: 25px 15px;
+        padding: 1.5rem 1rem;
     }
 
-    .terms-container {
-        width: 100%;
+    .terms-section,
+    .privacy-section {
+        padding: 1rem;
     }
+}
 
-    .terms-header h1 {
-        font-size: 36px;
-    }
-
-    .terms-section h2 {
-        font-size: 23px;
-    }
-
-    .terms-section p,
-    .terms-section li,
-    .terms-notice {
-        font-size: 16px;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

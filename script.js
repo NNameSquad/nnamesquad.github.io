@@ -221,13 +221,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function updateRulesContent() {
+function updateRulesContent(language = "pl") {
   const rulesList = document.getElementById("rules-list");
+  if (!rulesList || !window.rulesData) return;
+
   rulesList.innerHTML = "";
 
   let sectionIndex = 1;
 
-  const { sectionTitles, rules } = window.rulesData;
+  const translation =
+    window.rulesData.translations &&
+    window.rulesData.translations[language];
+  const { sectionTitles, rules } = translation || window.rulesData;
+  rulesList.lang = translation ? language : "pl";
   for (const section in rules) {
     const sectionElement = document.createElement("ul");
     const sectionTitle = document.createElement("h4");
@@ -372,7 +378,13 @@ function escapeHtml(str) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  updateRulesContent();
+  const languageSelect = document.getElementById("rules-language");
+  updateRulesContent(languageSelect ? languageSelect.value : "pl");
+  if (languageSelect) {
+    languageSelect.addEventListener("change", () => {
+      updateRulesContent(languageSelect.value);
+    });
+  }
 });
 window.addEventListener("load", fillStaffProfiles);
 
